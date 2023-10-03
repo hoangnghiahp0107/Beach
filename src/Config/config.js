@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-// yarn add dotenv
 dotenv.config();
 
 export default {
