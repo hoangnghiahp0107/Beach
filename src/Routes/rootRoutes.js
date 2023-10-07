@@ -3,6 +3,6 @@ import userRoutes from './userRoutes.js';
 const rootRouter = express.Router();
 
 // Đối tượng user
-rootRouter.use("/user", [userRoutes]);
+rootRouter.use("/auth", [userRoutes]);
 
 export default rootRouter;

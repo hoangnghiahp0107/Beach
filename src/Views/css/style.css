@@ -14,7 +14,7 @@ div {
 
 .navbar-dark .navbar-nav .nav-link {
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .logo{
@@ -71,6 +71,11 @@ video {
     #unity-canvas {
         width: 100%;
     }
+    .divider{
+        width:100%;
+    }
+    #aboutcontainer { width: 100%;}
+    #newscontainer{width: 100%;}
 }
 
 .search-bar{
@@ -274,4 +279,64 @@ video {
 
 .login-register p a:hover{
     text-decoration: underline;
+}
+
+@font-face {
+    font-family: 'CSFONT-TwistyPixel';
+    src: url('../../../public/font/CSFONT-TwistyPixel.ttf') format('truetype');
+}
+#aboutcontainer {
+    background-color: black;
+    text-align: center;
+    width: 100%;
+}
+
+.about {
+    border: 5px dashed white;
+    margin-left: 70px;
+    margin-right: 70px;
+    font-size: 30px;
+    color: white;
+    font-family: 'CSFONT-TwistyPixel',sans-serif;
+    padding: 20px;
+}
+
+.textfont {
+    font-family: 'CSFONT-TwistyPixel',sans-serif;
+}
+
+.divider
+{
+width: 60%;
+padding-top:150px;
+padding-bottom: 40px;
+}
+
+.tb{
+    border: 1px solid white;
+    
+}
+
+#newscontainer{
+    background-color: black;
+    text-align: center;
+    width: 100%;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body.dark{
+    --light: #181a1e;
+    --dark: #fbfbfb;
 }
