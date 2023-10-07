@@ -68,6 +68,7 @@ body{
     z-index: 500;
     padding-bottom: 20px;
     box-sizing: content-box;
+    text-decoration: none;
 }
 
 .sidebar .logo .logo-name span{
@@ -137,6 +138,7 @@ body{
     white-space: nowrap;
     overflow-x: hidden;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .sidebar .side-menu li.active a{
