@@ -32,22 +32,85 @@
             </li>
         </ul>
     </div>
-
     <div class="content">
         <nav>
             <ion-icon class="icon-menu" name="menu-outline"></ion-icon>
         </nav>
+        <div style="margin: 20px;">
+            <button id="btnThemSP"
+            class="btn btn-dark"
+            type="button"
+            data-toggle="modal"
+            data-target="#myModal">Thêm tài khoản</button>
+        </div>
+        <div class="tblSanPham" id="tblSanPham" style="margin: 20px;">
+            <table class="table table-bordered">
+              <thead>
+                <th>ID</th>
+                <th>Tài khoản</th>
+                <th>Mật khẩu</th>
+                <th>Họ tên</th>
+                <th>Ảnh đại diện</th>
+                <th>Chỉnh sửa</th>             
+              </thead>
+              <tbody id="tblDanhSachSP"></tbody>
+            </table>
+          </div>
     </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Quản lí người dùng</h3>
+            </div> 
+            <div class="modal-body">
+              <div class="form-group">    
+                   <!-- Account -->
+                    <div class="input-group">
+                    <input type="text" name="account" id="tai_khoan" class="form-control input-sm" placeholder="Tài khoản">
+                    </div>
+                    <span class="sp-thongbao text-danger" id="tbAccount">&zwj;</span>
 
+                  <!-- Password-->
+                  <div class="input-group">
+                    <input type="password" name="password" id="mat_khau" class="form-control input-sm" placeholder="Mật khẩu">
+                  </div>
+                  <span class="sp-thongbao text-danger" id="tbPassword">&zwj;</span>
 
+                  <!-- Name -->
+                  <div class="input-group">
+                    <input type="text" name="name" id="ho_ten" class="form-control input-sm" placeholder="Họ tên">
+                  </div>
+                  <span class="sp-thongbao text-danger" id="tbName">&zwj;</span>
+                  
+                  <!-- Image -->
+                  <div class="input-group">
+                    <input type="text" name="name" id="anh_dai_dien" class="form-control input-sm" placeholder="Hình ảnh">
+                  </div>
+                  <span class="sp-thongbao text-danger" id="tbName">&zwj;</span>   
+              <!-- popup -->
+            <div class="modal-content-popup"></div>
+            </div>
+            <div class="modal-footer">
+              <button id="btnThemNV" type="button" onclick="createAccount()" class="btn btn-success">Thêm người dùng</button>
+              <button id="btnCapNhat" type="button" onclick="UpdateNV()" class="btn btn-success">Cập nhật</button>
+              <button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/admin.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script type="module" src="services/callApi.js"></script>
+    <script src="js/adminController.js"></script>
   </body>
 </html>

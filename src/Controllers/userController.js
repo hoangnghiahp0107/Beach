@@ -1,10 +1,11 @@
 import sequelize from "../Models/index.js";
 import initModels from "../Models/init-models.js";
 import bcrypt from "bcrypt";
+import { taoToken } from "../Config/jwtConfig.js";
 
 const model = initModels(sequelize);
 
-const signUp = async(req,res) => {
+const apiCreateAccount = async(req,res) => {
     try{
         let { tai_khoan, mat_khau, ho_ten, anh_dai_dien } = req.body;
         let checkTK = await model.nguoi_dung.findAll({
@@ -13,7 +14,7 @@ const signUp = async(req,res) => {
             }
         })
         if (checkTK.length > 0) {
-            res.send("Email đã tồn tại!");
+            res.send("Tài khoản đã tồn tại!");
             return;
         }
         let newData = {
@@ -31,5 +32,42 @@ const signUp = async(req,res) => {
     }
 }
 
+const apiLoginAccount = async(req, res) => {
+    try {
+        let { tai_khoan, mat_khau } = req.body;
 
-export {signUp}
+        let checkTK = await model.nguoi_dung.findOne({
+            where: {
+                tai_khoan
+            }
+        });
+
+        if (checkTK){
+            let checkPass = bcrypt.compareSync( mat_khau, checkTK.mat_khau );
+            if(checkPass == true){
+                let token = taoToken(checkTK);
+                res.status(200).send(token);
+            }
+            else{
+                res.status(400).send("Mật khẩu không đúng");
+            }
+        }
+        else{
+            res.status(400).send("Tài khoản không đúng");
+        }
+        } catch (error) {
+            res.status(500).send("Đã có lỗi trong quá trình xử lý");
+        }
+}
+
+const apiGetUser = async (req, res) => {
+    try {
+        const data = await model.nguoi_dung.findAll();
+        res.send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
+    }
+}
+
+export { apiCreateAccount, apiGetUser, apiLoginAccount }
