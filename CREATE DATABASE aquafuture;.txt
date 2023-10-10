@@ -1,0 +1,87 @@
+CREATE DATABASE aquafuture;
+USE aquafuture;
+
+CREATE TABLE nguoi_dung (
+    nguoi_dung_id INT PRIMARY KEY AUTO_INCREMENT,
+    tai_khoan VARCHAR(200),
+    mat_khau VARCHAR(200),
+    ho_ten VARCHAR(200),
+    anh_dai_dien VARCHAR(200)
+);
+
+CREATE TABLE hinh_anh (
+	hinh_id INT PRIMARY KEY AUTO_INCREMENT,
+	nguoi_dung_id INT,
+	ten_hinh VARCHAR(200),
+	duong_dan VARCHAR(200),
+	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id)
+);
+
+CREATE TABLE bai_bao (
+    bao_id INT PRIMARY KEY AUTO_INCREMENT,
+    nguoi_dung_id INT,
+    hinh_id INT,
+    tieu_de_bao VARCHAR(200),
+    noi_dung LONGTEXT,
+    FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id),
+    FOREIGN KEY (hinh_id) REFERENCES hinh_anh(hinh_id)
+);
+
+CREATE TABLE binh_luan(
+	binh_luan_id INT PRIMARY KEY AUTO_INCREMENT,
+	nguoi_dung_id INT,
+	bao_id INT,
+	ngay_binh_luan DATE,
+	noi_dung VARCHAR(200),
+	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id),
+	FOREIGN KEY (bao_id) REFERENCES bai_bao(bao_id)
+);
+
+CREATE TABLE diem_so(
+	diem_so_id INT PRIMARY KEY AUTO_INCREMENT,
+	nguoi_dung_id INT,
+	point INT,
+	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id)
+);
+
+INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, anh_dai_dien)
+VALUES
+    ('user1', 'password1', 'Nguyễn Văn A', '/images/avatar1.jpg'),
+    ('user2', 'password2', 'Trần Thị B', '/images/avatar2.jpg'),
+    ('user3', 'password3', 'Lê Văn C', '/images/avatar3.jpg'),
+    ('user4', 'password4', 'Hoàng Thị D', '/images/avatar4.jpg'),
+    ('user5', 'password5', 'Phạm Văn E', '/images/avatar5.jpg');
+    
+INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan)
+VALUES
+    (1, 'Hình 1', '/images/image1.jpg'),
+    (2, 'Hình 2', '/images/image2.jpg'),
+    (3, 'Hình 3', '/images/image3.jpg'),
+    (4, 'Hình 4', '/images/image4.jpg'),
+    (5, 'Hình 5', '/images/image5.jpg');
+    
+INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung)
+VALUES
+    (1, 1, 'Bài báo số 1', 'Nội dung của bài báo số 1'),
+    (2, 2, 'Bài báo số 2', 'Nội dung của bài báo số 2'),
+    (3, 3, 'Bài báo số 3', 'Nội dung của bài báo số 3'),
+    (4, 4, 'Bài báo số 4', 'Nội dung của bài báo số 4'),
+    (5, 5, 'Bài báo số 5', 'Nội dung của bài báo số 5');
+    
+INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung)
+VALUES
+    (1, 1, '2023-10-01', 'Bình luận cho bài 1'),
+    (2, 2, '2023-10-02', 'Bình luận cho bài 2'),
+    (3, 3, '2023-10-03', 'Bình luận cho bài 3'),
+    (4, 4, '2023-10-04', 'Bình luận cho bài 4'),
+    (5, 5, '2023-10-05', 'Bình luận cho bài 5');
+INSERT INTO diem_so (nguoi_dung_id, point)
+VALUES
+    (1, 100),
+    (2, 95),
+    (3, 80),
+    (4, 75),
+    (5, 90);
+
+
+
