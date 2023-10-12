@@ -5,7 +5,7 @@ import { taoToken } from "../Config/jwtConfig.js";
 
 const model = initModels(sequelize);
 
-const apiCreateAccount = async(req,res) => {
+const signUp = async(req,res) => {
     try{
         let { tai_khoan, mat_khau, ho_ten, anh_dai_dien } = req.body;
         let checkTK = await model.nguoi_dung.findAll({
@@ -32,7 +32,7 @@ const apiCreateAccount = async(req,res) => {
     }
 }
 
-const apiLoginAccount = async(req, res) => {
+const login = async(req, res) => {
     try {
         let { tai_khoan, mat_khau } = req.body;
 
@@ -60,7 +60,7 @@ const apiLoginAccount = async(req, res) => {
         }
 }
 
-const apiGetUser = async (req, res) => {
+const getUser = async (req, res) => {
     try {
         const data = await model.nguoi_dung.findAll();
         res.send(data);
@@ -70,4 +70,4 @@ const apiGetUser = async (req, res) => {
     }
 }
 
-export { apiCreateAccount, apiGetUser, apiLoginAccount }
+export { signUp, login, getUser }

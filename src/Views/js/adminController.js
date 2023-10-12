@@ -1,10 +1,11 @@
-import nguoi_dung from "../../Models/nguoi_dung.js";
-
+function getElement(selector){
+  return document.querySelector(selector);
+}
 async function getAccount(){
     try {
         const response = await apiGetAccount();
         const users = response.data.map((user)=> {
-            return new nguoi_dung(
+            return new User(
                 user.nguoi_dung_id,
                 user.tai_khoan,
                 user.mat_khau,
@@ -12,7 +13,7 @@ async function getAccount(){
                 user.anh_dai_dien
             );
         });
-        renderPerson(users);
+        renderAccount(users);
         console.log(users);
     } catch (error) {
         console.log("Lỗi từ máy chủ");
@@ -20,13 +21,13 @@ async function getAccount(){
 }
 
 async function createAccount() {
-    debugger
     const users = {
       tai_khoan: getElement("#tai_khoan").value,
       mat_khau: getElement("#mat_khau").value,
       ho_ten: getElement("#ho_ten").value,
       anh_dai_dien: getElement("#anh_dai_dien").value
     };
+    debugger
     try {
       await apiCreateAccount(users);
       getAccount();
@@ -36,17 +37,17 @@ async function createAccount() {
     }
   }
 
-  function renderPerson(users) {
-    const html = users.reduce((result, product, index) => {
+  function renderAccount(users) {
+    const html = users.reduce((result, user, index) => {
       return (
         result +
         `
           <tr>
             <td>${index+1}</td>
-            <td>${users.tai_khoan}</td>
-            <td>${users.mat_khau}</td>
-            <td>${users.ho_ten}</td>
-            <td>${users.anh_dai_dien}</td>
+            <td>${user.tai_khoan}</td>
+            <td>${user.mat_khau}</td>
+            <td>${user.ho_ten}</td>
+            <td>${user.anh_dai_dien}</td>
             <td>
               <button class="btn btn-primary" onclick="selectPerson('${users.id}')">Xem</button>
               <button class="btn btn-danger" onclick="deletePerson('${users.id}')">Xoá</button>

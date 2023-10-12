@@ -8,9 +8,19 @@ async function apiCreateAccount(user) {
   });
 }
 
+async function apiLoginAccount(user) {
+  return await axios({
+    method: "POST",
+    url: `${URL}/api/auth/login`,
+    data: user,
+  });
+}
+
 async function apiGetAccount() {
   return await axios({
     method: "GET",
     url: `${URL}/api/auth/get-user`,
   });
 }
+
+

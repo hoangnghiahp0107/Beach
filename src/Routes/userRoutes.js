@@ -1,11 +1,11 @@
 import express from "express";
-import { apiCreateAccount, apiGetUser, apiLoginAccount } from "../Controllers/userController.js";
+import { getUser, login, signUp } from "../Controllers/userController.js";
 
 const userRoutes = express.Router();
 
-userRoutes.post("/signup", apiCreateAccount);
-userRoutes.post("/login", apiLoginAccount);
-userRoutes.get("/get-user", apiGetUser);
+userRoutes.post("/signup", signUp);
+userRoutes.post("/login", login);
+userRoutes.get("/get-user", getUser);
 
 
 export default userRoutes
