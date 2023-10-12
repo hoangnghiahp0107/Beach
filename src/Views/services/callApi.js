@@ -6,7 +6,6 @@ async function apiGetAccount() {
     url: `${URL}/api/auth/get-user`,
   });
 }
-console.log(apiGetAccount());
 
 async function apiCreateAccount(user) {
   return await axios({
@@ -15,7 +14,6 @@ async function apiCreateAccount(user) {
     data: user,
   });
 }
-console.log(apiGetAccount(user));
 
 async function apiLoginAccount(user) {
   return await axios({

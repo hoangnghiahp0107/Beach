@@ -11,7 +11,7 @@
     --success: #300E3C; 
 }
 
-ion-icon{
+.fa-solid{
     font-size: 1.7rem;
 }
 
@@ -73,6 +73,10 @@ body{
 
 .sidebar .logo .logo-name span{
     color: var(--dark);
+}
+
+.close:not(:disabled):not(.disabled):focus, .close:not(:disabled):not(.disabled):hover {
+    opacity: unset;
 }
 
 .sidebar .logo img{
@@ -150,7 +154,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.sidebar .side-menu li a ion-icon{
+.sidebar .side-menu li a .fa-solid{
     min-width: calc(60px - ((4px + 6px)* 2));
     display: flex;
     font-size: 1.6rem;

@@ -9,7 +9,7 @@ sideLinks.forEach(item => {
     })
 })
 
-const menuBar = document.querySelector('.content nav ion-icon.icon-menu');
+const menuBar = document.querySelector('.content nav .fa-solid.icon-menu');
 const sidebar = document.querySelector('.sidebar');
 menuBar.addEventListener('click', ()=>{
     sidebar.classList.toggle('close');

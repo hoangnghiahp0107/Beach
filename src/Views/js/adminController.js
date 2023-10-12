@@ -1,6 +1,10 @@
 function getElement(selector){
   return document.querySelector(selector);
 }
+document.addEventListener("DOMContentLoaded", function() {
+  getAccount();
+});
+
 async function getAccount(){
     try {
         const response = await apiGetAccount();
@@ -14,7 +18,6 @@ async function getAccount(){
             );
         });
         renderAccount(users);
-        console.log(users);
     } catch (error) {
         console.log("Lỗi từ máy chủ");
     }
@@ -37,25 +40,25 @@ async function createAccount() {
     }
   }
 
-  function renderAccount(users) {
-    const html = users.reduce((result, user, index) => {
-      return (
-        result +
-        `
-          <tr>
-            <td>${index+1}</td>
-            <td>${user.tai_khoan}</td>
-            <td>${user.mat_khau}</td>
-            <td>${user.ho_ten}</td>
-            <td>${user.anh_dai_dien}</td>
-            <td>
-              <button class="btn btn-primary" onclick="selectPerson('${users.id}')">Xem</button>
-              <button class="btn btn-danger" onclick="deletePerson('${users.id}')">Xoá</button>
-            </td>
-          </tr>
-        `
-      );
-    }, "");
-  
-    document.getElementById("tblDanhSachSP").innerHTML = html;
-  }
+ function renderAccount(users) {
+  const html = users.reduce((result, user, index) => {
+    return (
+      result +
+      `
+        <tr>
+          <td>${index+1}</td>
+          <td>${user.tai_khoan}</td>
+          <td>${user.mat_khau}</td>
+          <td>${user.ho_ten}</td>
+          <td>${user.anh_dai_dien}</td>
+          <td style="display: flex">
+            <button class="btn btn-primary mx-2" onclick="selectPerson('${user.id}')">Xem</button>
+            <button class="btn btn-danger" onclick="deletePerson('${user.id}')">Xoá</button>
+          </td>
+        </tr>
+      `
+    );
+  }, "");
+
+  document.getElementById("tblDanhSachSP").innerHTML = html;
+}
