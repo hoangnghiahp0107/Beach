@@ -1,5 +1,12 @@
 const URL = "http://localhost:8080";
 
+async function apiGetAccount() {
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/auth/get-user`,
+  });
+}
+
 async function apiCreateAccount(user) {
   return await axios({
     method: "POST",
@@ -16,11 +23,6 @@ async function apiLoginAccount(user) {
   });
 }
 
-async function apiGetAccount() {
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/auth/get-user`,
-  });
-}
+
 
 
