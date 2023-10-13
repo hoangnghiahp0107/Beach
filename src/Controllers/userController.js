@@ -70,4 +70,87 @@ const getUser = async (req, res) => {
     }
 }
 
-export { signUp, login, getUser }
+const getUserID = async (req, res) =>{
+    const {nguoi_dung_id} = req.params;
+    const data = await model.nguoi_dung.findOne({
+        where:{
+            nguoi_dung_id: nguoi_dung_id
+        }
+    });
+    res.send(data)
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const { nguoi_dung_id } = req.params;
+        
+        await model.binh_luan.destroy({
+            where: {
+                nguoi_dung_id: nguoi_dung_id
+            }
+        });
+
+        await model.bai_bao.destroy({
+            where:{
+                nguoi_dung_id: nguoi_dung_id
+            }
+        })
+        
+        await model.hinh_anh.destroy({
+            where: {
+                nguoi_dung_id: nguoi_dung_id
+            }
+        });
+
+        await model.diem_so.destroy({
+            where: {
+                nguoi_dung_id: nguoi_dung_id
+            }
+        });
+
+        await model.nguoi_dung.destroy({
+            where: {
+                nguoi_dung_id: nguoi_dung_id
+            }
+        });
+        res.send("Xóa ảnh thành công");
+    } catch (error) {
+        console.log("Lỗi xóa ảnh:", error);
+        res.status(500).send("Đã xảy ra lỗi trong quá trình xử lí.");
+    }
+}
+
+const updateUser = async (req, res) => {
+  try {
+    const { nguoi_dung_id } = req.params;
+    const { tai_khoan, ho_ten, mat_khau, anh_dai_dien } = req.body;
+
+    const hashedPassword = bcrypt.hashSync(mat_khau, 10);
+
+    const checkTK = await model.nguoi_dung.findOne({
+      where: {
+        tai_khoan
+      }
+    });
+
+    if (checkTK) {
+      return res.status(400).send("Tài khoản đã tồn tại!");
+    }
+
+    await model.nguoi_dung.update(
+      { tai_khoan, ho_ten, mat_khau: hashedPassword, anh_dai_dien },
+      {
+        where: {
+          nguoi_dung_id
+        }
+      }
+    );
+    return res.status(200).send("Cập nhật thành công!");
+  } catch (error) {
+    console.error("Lỗi khi cập nhật thông tin người dùng:", error);
+    return res.status(500).send("Lỗi khi cập nhật thông tin người dùng");
+  }
+}
+
+
+export { signUp, login, getUser, getUserID, deleteUser, updateUser }
