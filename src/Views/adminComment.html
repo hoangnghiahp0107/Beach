@@ -41,15 +41,15 @@
             class="btn btn-dark"
             type="button"
             data-toggle="modal"
-            data-target="#myModal">Thêm tin tức</button>
+            data-target="#myModal">Thêm bình luận</button>
         </div>
         <div class="tblSanPham" id="tblSanPham" style="margin: 20px;">
             <table class="table table-bordered">
               <thead>
-                <th>ID</th>
-                <th>Người dùng</th>
-                <th>Hình ảnh</th>
-                <th>Tiêu đề</th>
+                <th>Bình luận ID</th>
+                <th>Người dùng ID</th>
+                <th>Báo ID</th>
+                <th>Ngày giờ bình luận</th>
                 <th>Nội dung</th>
                 <th>Chỉnh sửa</th>             
               </thead>
@@ -61,27 +61,27 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h3>Quản lí tin tức</h3>
+              <h3>Quản lí bình luận</h3>
             </div> 
             <div class="modal-body">
               <div class="form-group">    
                    <!-- Account -->
                     <div class="input-group">
-                    <input type="number" name="account" id="nguoi_dung_id" class="form-control input-sm" placeholder="Người dùng">
+                    <input type="number" name="account" id="nguoi_dung_id" class="form-control input-sm" placeholder="Người Dùng ID">
                     </div>
                     <span class="sp-thongbao text-danger" id="tbAccount">&zwj;</span>
 
                   <!-- Name -->
                   <div class="input-group">
-                    <input type="number" name="image" id="hinh_id" class="form-control input-sm" placeholder="Hình ảnh">
+                    <input type="number" name="image" id="bao_id" class="form-control input-sm" placeholder="Báo ID">
                   </div>
                   <span class="sp-thongbao text-danger" id="tbName">&zwj;</span> 
 
                   <!-- Image -->
                   <div class="input-group">
-                    <input type="text" name="name" id="tieu_de_bao" class="form-control input-sm" placeholder="Tiêu đề">
+                    <input type="datetime-local" name="name" id="ngay_binh_luan" class="form-control input-sm" placeholder="Ngày giờ chiếu">
                   </div>
-                  <span class="sp-thongbao text-danger" id="tbImage">&zwj;</span>  
+                  <span class="sp-thongbao text-danger" id="tbNgayBinhLuan">&zwj;</span>  
                   
                   <!-- Image -->
                   <div class="input-group">
@@ -92,7 +92,7 @@
             <div class="modal-content-popup"></div>
             </div>
             <div class="modal-footer">
-              <button id="btnThemNV" type="button" onclick="createNews()" class="btn btn-success">Thêm tin tức</button>
+              <button id="btnThemNV" type="button" onclick="taoComment()" class="btn btn-success">Thêm bình luận</button>
             </div>
           </div>
         </div>
@@ -109,6 +109,6 @@
     <script src="js/sidebar.js"></script>
     <script src="js/class.js"></script>
     <script src="services/callApi.js"></script>
-    <script src="js/newsController.js"></script>
+    <script src="js/commentController.js"></script>
   </body>
 </html>

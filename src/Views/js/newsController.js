@@ -61,7 +61,10 @@ async function getNews(){
       getElement("#hinh_id").value = product.hinh_id;
       getElement("#tieu_de_bao").value = product.tieu_de_bao;
       getElement("#noi_dung").value = product.noi_dung;
-  
+      getElement(".modal-footer").innerHTML = `
+      <button class="btn btn-success" onclick="updateNews('${product.bao_id}')">Cập nhật</button>
+      <button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+      `;
       $("#myModal").modal("show");
     } catch (error) {
       alert("Lấy thông tin tin tức thất bại");
@@ -110,9 +113,9 @@ async function getNews(){
     if (willUpdate.isConfirmed) {
       try {
         await apiUpdateNew(newID, news);
-        const updateData = await getAccount();
-        renderAccount(updateData);
-        Swal.fire('Cập nhật tin tức thành công', '', 'success');
+        Swal.fire('Cập nhật tin tức thành công', '', 'success').then(() => {
+          location.reload();
+        });
       } catch (error) {
         Swal.fire('Cập nhật tin tức thất bại', '', 'error');
       }

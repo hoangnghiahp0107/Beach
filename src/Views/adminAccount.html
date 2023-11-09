@@ -20,8 +20,8 @@
         <ul class="side-menu">
             <li><a href="adminAccount.html"><i class="fa-solid fa-user"></i>Tài khoản</a></li>
             <li><a href="adminNews.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
-            <li><a href="#"><i class="fa-solid fa-comment"></i>Bình luận</a></li>
-            <li><a href="#"><i class="fa-solid fa-ranking-star"></i>Xếp hạng</a></li>
+            <li><a href="adminComment.html"><i class="fa-solid fa-comment"></i>Bình luận</a></li>
+            <li><a href="#"><i class="fa-solid fa-image"></i>Hình ảnh</a></li>
         </ul>
         <ul class="side-menu">
             <li>
@@ -50,6 +50,7 @@
                 <th>Tài khoản</th>
                 <th>Họ tên</th>
                 <th>Mật khẩu</th>
+                <th>Loại người dùng</th>
                 <th>Chỉnh sửa</th>             
               </thead>
               <tbody id="tblDanhSachSP"></tbody>
@@ -75,13 +76,18 @@
                     <input type="text" name="name" id="ho_ten" class="form-control input-sm" placeholder="Họ tên">
                   </div>
                   <span class="sp-thongbao text-danger" id="tbName">&zwj;</span>                  
-
+                  
                   <!-- Password-->
                   <div class="input-group">
                     <input type="password" name="password" id="mat_khau" class="form-control input-sm" placeholder="Mật khẩu">
                   </div>
                   <span class="sp-thongbao text-danger" id="tbPassword">&zwj;</span>
                   
+                  <!-- Name -->
+                  <div class="input-group">
+                    <input type="text" name="name" id="loai_nguoi_dung" class="form-control input-sm" placeholder="Loại người dùng">
+                  </div>
+                  <span class="sp-thongbao text-danger" id="tbName">&zwj;</span>                   
                   <!-- Image -->
                   <div class="input-group">
                     <input type="text" name="name" id="anh_dai_dien" class="form-control input-sm" placeholder="Hình ảnh">
@@ -92,8 +98,6 @@
             </div>
             <div class="modal-footer">
               <button id="btnThemUS" type="button" onclick="createAccount()" class="btn btn-success">Thêm người dùng</button>
-              <button class="btn btn-success" onclick="updateAccount()">Cập nhật</button>
-              <button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
             </div>
           </div>
         </div>

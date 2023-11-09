@@ -7,7 +7,7 @@ const model = initModels(sequelize);
 
 const signUp = async(req,res) => {
     try{
-        let { tai_khoan, mat_khau, ho_ten, anh_dai_dien } = req.body;
+        let { tai_khoan, mat_khau, ho_ten, loai_nguoi_dung ,anh_dai_dien } = req.body;
         let checkTK = await model.nguoi_dung.findAll({
             where:{
                 tai_khoan
@@ -21,6 +21,7 @@ const signUp = async(req,res) => {
             tai_khoan,
             mat_khau: bcrypt.hashSync(mat_khau, 10),
             ho_ten,
+            loai_nguoi_dung,
             anh_dai_dien
         };
         await model.nguoi_dung.create(newData);
@@ -102,12 +103,6 @@ const deleteUser = async (req, res) => {
             }
         });
 
-        await model.diem_so.destroy({
-            where: {
-                nguoi_dung_id: nguoi_dung_id
-            }
-        });
-
         await model.nguoi_dung.destroy({
             where: {
                 nguoi_dung_id: nguoi_dung_id
@@ -123,34 +118,26 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { nguoi_dung_id } = req.params;
-    const { tai_khoan, ho_ten, mat_khau, anh_dai_dien } = req.body;
+    const { ho_ten, mat_khau, loai_nguoi_dung,anh_dai_dien } = req.body;
 
     const hashedPassword = bcrypt.hashSync(mat_khau, 10);
 
-    const checkTK = await model.nguoi_dung.findOne({
-      where: {
-        tai_khoan
-      }
-    });
-
-    if (checkTK) {
-      return res.status(400).send("Tài khoản đã tồn tại!");
-    }
-
     await model.nguoi_dung.update(
-      { tai_khoan, ho_ten, mat_khau: hashedPassword, anh_dai_dien },
+      { ho_ten, mat_khau: hashedPassword, loai_nguoi_dung, anh_dai_dien },
       {
         where: {
           nguoi_dung_id
         }
       }
     );
+
     return res.status(200).send("Cập nhật thành công!");
   } catch (error) {
     console.error("Lỗi khi cập nhật thông tin người dùng:", error);
     return res.status(500).send("Lỗi khi cập nhật thông tin người dùng");
   }
 }
+
 
 
 export { signUp, login, getUser, getUserID, deleteUser, updateUser }

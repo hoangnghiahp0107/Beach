@@ -22,6 +22,10 @@ export default class nguoi_dung extends Model {
       type: DataTypes.STRING(200),
       allowNull: true
     },
+    loai_nguoi_dung: {
+      type: DataTypes.STRING(200),
+      allowNull: true
+    },
     anh_dai_dien: {
       type: DataTypes.STRING(200),
       allowNull: true

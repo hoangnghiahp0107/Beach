@@ -10,9 +10,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../Views/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   </head>
   <body>
-      <header class="sticky-top bg-header">
+      <header class="bg-header">
           <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <a class="navbar-brand" href="../Views/index.html"><img class="logo" src="../../public/img/Logo.png" alt=""></a>
@@ -20,7 +23,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link textfont" href="../Views/index.html">TRANG CHỦ<span class="sr-only">(current)</span></a>
                         </li>
@@ -40,7 +43,7 @@
                             <a class="nav-link textfont" href="../Views/login.html">TÀI KHOẢN</a>
                         </li>
                     </ul>
-                    <form class="search-bar">
+                    <form class="search-bar ml-3">
                         <input type="text" placeholder="Search" name="q">
                         <button type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -51,30 +54,49 @@
           </div>
       </header>
       <!--Head-->
-      <section>
-          <div>
-              <video muted autoplay loop src="../../public/video/BackGround.mp4"></video>
-              <img class="banner_title" src="../../public/img/title_Logo.png" alt="">
-              <img class="banner_bot" src="../../public/img/body.png" alt="" style="width: 100%;">
-          </div>
+      <section class="banner">
+        <video muted autoplay loop src="../../public/video/BackGround.mp4"></video>
+        <img class="banner_title" src="../../public/img/title_Logo.png" alt="">
+        <img class="banner_bot" src="../../public/img/body.png" alt="" style="width: 100%;">
       </section>
       <!--Chi Tiet-->
-      <section id="aboutcontainer">
+      <section id="about">
         <img class="divider" src="../../public/img/about_div.png" alt="" />
-        <div class="container">
-            <table>
-                <tbody>
-                    <tr>
-                        <div class="about">
-                            100 triệu động vật biển chết mỗi năm chỉ vì rác thải nhựa, 8,3 triệu tấn nhựa được thải ra biển hàng năm. Trong đó, 236.000 tấn là vi nhựa mà các sinh vật biển nhầm với thức ăn… là những con số đáng báo động đối với tình trạng ô nhiễm đại dương trong những năm gần đây. Những số liệu trên đến từ thói quen sử dụng và vứt rác bừa bãi của con người chúng ta.
-                            <br>
-                            AQUA FUTURE với mục tiêu nâng cao ý thức của các bạn sinh viên huflit nói riêng và cộng đồng nói chung về vấn đề ô nhiễm môi trường.
-                        </div>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="about__dad">
+            <div class="about__left wow animate__animated animate__fadeInLeft animate__delay-2``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````s">
+                <img src="../../public/img/trash.jpg" alt="">
+            </div>
+            <div class="about__right wow animate__animated animate__fadeInRight animate__delay-2s">
+                <div class="about__title">
+                    <h2>Hãy Chung Tay
+                        <br>
+                        Bảo Vệ
+                        <br>
+                        Môi Trường Biển
+                    </h2>
+                </div>
+                <div class="about__body">
+                    <p>Môi trường biển hiện đang bị đe dọa làm ảnh hưởng đến các sinh vật sống khác. Hơn thế nửa là chúng ta đang phải sống trong một môi trường vô cùng ô nhiễm vì thế hãy chung tay bảo vệ biển nào!</p>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Chúng tôi ủng hộ các chương trình tạo cơ hội phát triển cho con người.</span>
+                    <br>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Theo dõi các sự kiện và xu hướng. Cập nhật tin tức gần đây của chúng tôi.
+                    </span>
+                    <br>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Cuối cùng, tất cả đều phụ thuộc vào con người. Tạo ra một đội ngũ chiến thắng.
+                    </span>
+                    <br>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Theo dõi các sự kiện và xu hướng. Cập nhật tin tức gần đây của chúng tôi.
+                    </span>
+                    <br>
+                </div>
+            </div>
         </div>
-        </section>
+    </section>
+    
         <!-- Tin Tuc-->
         <section id="newscontainer">
             <img class="divider" src="../../public/img/news_div.png" alt=""/>
@@ -84,7 +106,7 @@
         </section>
       <!--Dung De Rac Roi - Game -->
   
-      <section id="game">
+      <!-- <section id="game">
         <img class="divider" src="../../public/img/game_div.png" alt="" />
         <canvas id="unity-canvas"></canvas>
         <script src="Build/DungDeRacRoi_TrashFall.loader.js"></script>
@@ -105,7 +127,7 @@
                   productVersion: "1.0",
               });
         </script>
-      </section>
+      </section> -->
       <a href="#" class="backToTop cd-top text-replace js-cd-top">
         <i class="fa fa-arrow-up"></i>
       </a>

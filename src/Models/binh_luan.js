@@ -27,7 +27,7 @@ export default class binh_luan extends Model {
       }
     },
     ngay_binh_luan: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: true
     },
     noi_dung: {

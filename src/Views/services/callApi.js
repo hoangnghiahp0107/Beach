@@ -37,7 +37,7 @@ async function apiDeleteAccount(userID){
   })
 }
 
-async function apiUpdateUser(userID, user) {
+async function apiUpdateAccount(userID, user) {
   return await axios({
     method: "PUT",
     url: `${URL}/api/auth/update-user/${userID}`,
@@ -77,7 +77,44 @@ async function apiDeleteNew(newID){
 async function apiUpdateNew(newID, news) {
   return await axios({
     method: "PUT",
-    url: `${URL}/api/auth/update-new/${newID}`,
+    url: `${URL}/api/news/update-new/${newID}`,
     data: news
+  });
+}
+
+async function apiGetComment() {
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/comment/get-comment`,
+  });
+}
+
+async function apiCreateComment(comment) {
+  return await axios({
+    method: "POST",
+    url: `${URL}/api/comment/create-comment`,
+    data: comment
+  });
+}
+
+async function apiGetCommentID(commentID){
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/comment/get-comment-id/${commentID}`
+  })
+}
+
+async function apiDeleteComment(commentID){
+  return await axios({
+    method: "DELETE",
+    url: `${URL}/api/comment/delete-comment/${commentID}`
+  })
+}
+
+async function apiUpdateComment(commentID, comment) {
+  return await axios({
+    method: "PUT",
+    url: `${URL}/api/comment/update-comment/${commentID}`,
+    data: comment
   });
 }

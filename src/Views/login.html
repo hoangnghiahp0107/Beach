@@ -20,7 +20,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link textfont" href="../Views/index.html">TRANG CHỦ<span class="sr-only">(current)</span></a>
                     </li>
@@ -40,7 +40,7 @@
                         <a class="nav-link textfont" href="../Views/login.html">TÀI KHOẢN</a>
                     </li>
                 </ul>
-                <form class="search-bar">
+                <form class="search-bar mr-3">
                     <input type="text" placeholder="Search" name="q">
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -49,8 +49,7 @@
             </div>
         </nav>
       </div>
-  </header>
-    
+  </header> 
    <section id="user">
         <div class="wrapper">
             <div class="form-box login">
@@ -87,36 +86,36 @@
                 <form action="#">
                     <div class="input-box">
                         <span class="icon">
-                          <ion-icon name="accessibility-outline"></ion-icon>                        
+                            <ion-icon name="person"></ion-icon>
                         </span>
-                        <input type="text" required>
-                        <label>Họ tên</label>
+                        <input id="tai_khoan" type="text" required>
+                        <label>Tài khoản</label>
                     </div>
                     <div class="input-box">
                         <span class="icon">
-                            <ion-icon name="person"></ion-icon>
+                          <ion-icon name="accessibility-outline"></ion-icon>                        
                         </span>
-                        <input type="text" required>
-                        <label>Tài khoản</label>
+                        <input id="ho_ten" type="text" required>
+                        <label>Họ tên</label>
                     </div>
                     <div class="input-box">
                         <span class="icon">
                           <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input type="password" required>
+                        <input id="mat_khau" type="password" required>
                         <label>Mật khẩu</label>
                     </div>
                     <div class="input-box">
                         <span class="icon">
                           <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input type="password" required>
-                        <label>Nhập lại mật khẩu</label>
+                        <input id="anh_dai_dien" type="text" required>
+                        <label>Ảnh đại diện</label>
                     </div>
                     <div class="remember-forgot">
                         <label><input type="checkbox">Tôi đồng ý với các điều khoản</label>
                     </div>
-                    <button type="submit" class="btn">Đăng ký</button>
+                    <button type="submit" class="btn" onclick="createAccount()">Đăng ký</button>
                     <div class="login-register">
                         <p>Bạn đã có tài khoản?
                             <a href="#" class="login-link">Đăng nhập</a>
@@ -133,7 +132,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/class.js"></script>
+    <script src="services/callApi.js"></script>
+    <script src="js/authController.js"></script>
   </body>
 </html>

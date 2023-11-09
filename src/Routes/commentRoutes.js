@@ -1,0 +1,12 @@
+import express from "express";
+import { createComment, deleteComment, getComment, getCommentID, updateComment } from "../Controllers/commentController.js";
+
+const commentRoutes = express.Router();
+
+commentRoutes.get("/get-comment", getComment);
+commentRoutes.post("/create-comment", createComment);
+commentRoutes.get("/get-comment-id/:binh_luan_id", getCommentID);
+commentRoutes.delete("/delete-comment/:binh_luan_id", deleteComment);
+commentRoutes.put("/update-comment/:binh_luan_id", updateComment)
+
+export default commentRoutes
