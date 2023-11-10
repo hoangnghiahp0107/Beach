@@ -9,6 +9,15 @@ class User {
     }
 }
 
+class Images extends User {
+    constructor(hinh_id, nguoi_dung_id, ten_hinh, duong_dan){
+        super(nguoi_dung_id);
+        this.hinh_id = hinh_id;
+        this.ten_hinh = ten_hinh;
+        this.duong_dan = duong_dan;
+    }
+}
+
 class New extends User {
     constructor(bao_id, nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) {
         super(nguoi_dung_id);

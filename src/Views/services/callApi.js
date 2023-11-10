@@ -118,3 +118,34 @@ async function apiUpdateComment(commentID, comment) {
     data: comment
   });
 }
+
+async function apiGetImage() {
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/image/get-images`,
+  });
+}
+
+async function apiGetImgID(imageID){
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/image/get-img-id/${imageID}`
+  })
+}
+
+async function apiDeleteImage(imageID){
+  return await axios({
+    method: "DELETE",
+    url: `${URL}/api/image/delete-image/${imageID}`
+  })
+}
+
+async function apiCreateImg(image) {
+  try {
+    const response = await axios.post(`${URL}/api/image/upload`, image);
+    return response.data;
+  } catch (error) {
+    console.error('Error during image upload:', error);
+    throw error; 
+  }
+}

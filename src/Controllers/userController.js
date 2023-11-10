@@ -5,33 +5,38 @@ import { taoToken } from "../Config/jwtConfig.js";
 
 const model = initModels(sequelize);
 
-const signUp = async(req,res) => {
-    try{
-        let { tai_khoan, mat_khau, ho_ten, loai_nguoi_dung ,anh_dai_dien } = req.body;
-        let checkTK = await model.nguoi_dung.findAll({
-            where:{
-                tai_khoan
-            }
-        })
-        if (checkTK.length > 0) {
-            res.send("Tài khoản đã tồn tại!");
-            return;
-        }
-        let newData = {
-            tai_khoan,
-            mat_khau: bcrypt.hashSync(mat_khau, 10),
-            ho_ten,
-            loai_nguoi_dung,
-            anh_dai_dien
-        };
-        await model.nguoi_dung.create(newData);
-        res.send("Đăng ký thành công!");
+const signUp = async (req, res) => {
+    try {
+      let { tai_khoan, mat_khau, ho_ten, loai_nguoi_dung, anh_dai_dien } = req.body;
+      let checkTK = await model.nguoi_dung.findAll({
+        where: {
+          tai_khoan,
+        },
+      });
+  
+      if (checkTK.length > 0) {
+        res.send("Tài khoản đã tồn tại!");
+        return;
+      }
+  
+      loai_nguoi_dung = loai_nguoi_dung || "user";
+  
+      let newData = {
+        tai_khoan,
+        mat_khau: bcrypt.hashSync(mat_khau, 10),
+        ho_ten,
+        loai_nguoi_dung,
+        anh_dai_dien,
+      };
+  
+      await model.nguoi_dung.create(newData);
+      res.send("Đăng ký thành công!");
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Đã có lỗi trong quá trình xử lý");
     }
-    catch (error) {
-        console.log(error);
-        res.status(500).send("Đã có lỗi trong quá trình xử lý");
-    }
-}
+  };
+  
 
 const login = async(req, res) => {
     try {

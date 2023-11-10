@@ -69,7 +69,7 @@ function getElement(selector){
         $("#myModal").modal("show");
       
       } catch (error) {
-        alert("Lấy thông tin người dùng thất bại");
+        alert("Lấy thông tin bình luận thất bại");
       }
     }
 

@@ -40,7 +40,7 @@
                         <a class="nav-link textfont" href="../Views/login.html">TÀI KHOẢN</a>
                     </li>
                 </ul>
-                <form class="search-bar mr-3">
+                <form class="search-bar ml-3">
                     <input type="text" placeholder="Search" name="q">
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -52,28 +52,28 @@
   </header> 
    <section id="user">
         <div class="wrapper">
-            <div class="form-box login">
+            <div class="form-box login" id="login">
                 <h2>Đăng nhập</h2>
                 <form action="#">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="person"></ion-icon>
                         </span>
-                        <input type="text" required>
+                        <input id="tai_khoan_login" type="text" required>
                         <label>Tài khoản</label>
                     </div>
                     <div class="input-box">
                         <span class="icon">
                           <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input type="password" required>
+                        <input id="mat_khau_login" type="password" required>
                         <label>Mật khẩu</label>
                     </div>
                     <div class="remember-forgot">
                         <label><input type="checkbox">Lưu mật khẩu</label>
                         <a href="#">Quên mật khẩu?</a>
                     </div>
-                    <button type="submit" class="btn">Đăng nhập</button>
+                    <button type="submit" class="btn" onclick="loginAccount()">Đăng nhập</button>
                     <div class="login-register">
                         <p>Chưa có tài khoản?
                             <a href="#" class="register-link">Đăng ký</a>
@@ -109,13 +109,13 @@
                         <span class="icon">
                           <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input id="anh_dai_dien" type="text" required>
-                        <label>Ảnh đại diện</label>
+                        <input id="nhap_lai_mk" type="password" required>
+                        <label>Nhập lại mật khẩu</label>
                     </div>
                     <div class="remember-forgot">
-                        <label><input type="checkbox">Tôi đồng ý với các điều khoản</label>
+                        <label><input type="checkbox" required>Tôi đồng ý với các điều khoản</label>
                     </div>
-                    <button type="submit" class="btn" onclick="createAccount()">Đăng ký</button>
+                    <button type="submit" class="btn" onclick="createUser()">Đăng ký</button>
                     <div class="login-register">
                         <p>Bạn đã có tài khoản?
                             <a href="#" class="login-link">Đăng nhập</a>
@@ -128,13 +128,14 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../Views/js/auth.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../Views/js/auth.js"></script>
     <script src="js/class.js"></script>
     <script src="services/callApi.js"></script>
-    <script src="js/authController.js"></script>
+    <script src="js/authController.js"></script>   
   </body>
 </html>
