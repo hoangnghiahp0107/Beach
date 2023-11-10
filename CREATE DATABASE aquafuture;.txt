@@ -1,11 +1,9 @@
-CREATE DATABASE aquafuture;
-USE aquafuture;
-
 CREATE TABLE nguoi_dung (
     nguoi_dung_id INT PRIMARY KEY AUTO_INCREMENT,
     tai_khoan VARCHAR(200),
     mat_khau VARCHAR(200),
     ho_ten VARCHAR(200),
+    loai_nguoi_dung VARCHAR(200),
     anh_dai_dien VARCHAR(200)
 );
 
@@ -31,57 +29,34 @@ CREATE TABLE binh_luan(
 	binh_luan_id INT PRIMARY KEY AUTO_INCREMENT,
 	nguoi_dung_id INT,
 	bao_id INT,
-	ngay_binh_luan DATE,
+	ngay_binh_luan DATETIME,
 	noi_dung VARCHAR(200),
 	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id),
 	FOREIGN KEY (bao_id) REFERENCES bai_bao(bao_id)
 );
 
-CREATE TABLE diem_so(
-	diem_so_id INT PRIMARY KEY AUTO_INCREMENT,
-	nguoi_dung_id INT,
-	point INT,
-	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id)
-);
+INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, loai_nguoi_dung, anh_dai_dien) VALUES ('user1', '123456', 'Nguyễn Văn A', 'admin', 'https://i.imgur.com/1.jpg');
+INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, loai_nguoi_dung, anh_dai_dien) VALUES ('user2', '123456', 'Nguyễn Văn B', 'user', 'https://i.imgur.com/2.jpg');
+INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, loai_nguoi_dung, anh_dai_dien) VALUES ('user3', '123456', 'Nguyễn Văn C', 'user', 'https://i.imgur.com/3.jpg');
+INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, loai_nguoi_dung, anh_dai_dien) VALUES ('user4', '123456', 'Nguyễn Văn D', 'user', 'https://i.imgur.com/4.jpg');
+INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, loai_nguoi_dung, anh_dai_dien) VALUES ('user5', '123456', 'Nguyễn Văn E', 'user', 'https://i.imgur.com/5.jpg');
 
-INSERT INTO nguoi_dung (tai_khoan, mat_khau, ho_ten, anh_dai_dien)
-VALUES
-    ('user1', 'password1', 'Nguyễn Văn A', '/images/avatar1.jpg'),
-    ('user2', 'password2', 'Trần Thị B', '/images/avatar2.jpg'),
-    ('user3', 'password3', 'Lê Văn C', '/images/avatar3.jpg'),
-    ('user4', 'password4', 'Hoàng Thị D', '/images/avatar4.jpg'),
-    ('user5', 'password5', 'Phạm Văn E', '/images/avatar5.jpg');
-    
-INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan)
-VALUES
-    (1, 'Hình 1', '/images/image1.jpg'),
-    (2, 'Hình 2', '/images/image2.jpg'),
-    (3, 'Hình 3', '/images/image3.jpg'),
-    (4, 'Hình 4', '/images/image4.jpg'),
-    (5, 'Hình 5', '/images/image5.jpg');
-    
-INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung)
-VALUES
-    (1, 1, 'Bài báo số 1', 'Nội dung của bài báo số 1'),
-    (2, 2, 'Bài báo số 2', 'Nội dung của bài báo số 2'),
-    (3, 3, 'Bài báo số 3', 'Nội dung của bài báo số 3'),
-    (4, 4, 'Bài báo số 4', 'Nội dung của bài báo số 4'),
-    (5, 5, 'Bài báo số 5', 'Nội dung của bài báo số 5');
-    
-INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung)
-VALUES
-    (1, 1, '2023-10-01', 'Bình luận cho bài 1'),
-    (2, 2, '2023-10-02', 'Bình luận cho bài 2'),
-    (3, 3, '2023-10-03', 'Bình luận cho bài 3'),
-    (4, 4, '2023-10-04', 'Bình luận cho bài 4'),
-    (5, 5, '2023-10-05', 'Bình luận cho bài 5');
-INSERT INTO diem_so (nguoi_dung_id, point)
-VALUES
-    (1, 100),
-    (2, 95),
-    (3, 80),
-    (4, 75),
-    (5, 90);
+INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan) VALUES (1, 'Hình 1', 'https://i.imgur.com/1.jpg');
+INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan) VALUES (2, 'Hình 2', 'https://i.imgur.com/2.jpg');
+INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan) VALUES (3, 'Hình 3', 'https://i.imgur.com/3.jpg');
+INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan) VALUES (4, 'Hình 4', 'https://i.imgur.com/4.jpg');
+INSERT INTO hinh_anh (nguoi_dung_id, ten_hinh, duong_dan) VALUES (5, 'Hình 5', 'https://i.imgur.com/5.jpg');
 
+INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) VALUES (1, 1, 'Bài báo 1', 'Nội dung bài báo 1');
+INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) VALUES (2, 2, 'Bài báo 2', 'Nội dung bài báo 2');
+INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) VALUES (3, 3, 'Bài báo 3', 'Nội dung bài báo 3');
+INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) VALUES (4, 4, 'Bài báo 4', 'Nội dung bài báo 4');
+INSERT INTO bai_bao (nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) VALUES (5, 5, 'Bài báo 5', 'Nội dung bài báo 5');
+
+INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung) VALUES (1, 1, '2023-11-08 21:45:48', 'Bình luận 1');
+INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung) VALUES (2, 2, '2023-11-08 21:45:48', 'Bình luận 2');
+INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung) VALUES (3, 2, '2023-11-08 21:45:48', 'Bình luận 1');
+INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung) VALUES (4, 3, '2023-11-08 21:45:48', 'Bình luận 1');
+INSERT INTO binh_luan (nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung) VALUES (5, 4, '2023-11-08 21:45:48', 'Bình luận 1');
 
 
