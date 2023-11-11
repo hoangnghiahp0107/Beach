@@ -70,7 +70,7 @@ async function apiGetNewsID(newID){
 async function apiGetSearchName(name){
   return await axios({
     method: "GET",
-    url: `${URL}/api/news/get-search-name/${name}.html#newscontainer`
+    url: `${URL}/api/news/get-search-name/${name}`
   })
 }
 
