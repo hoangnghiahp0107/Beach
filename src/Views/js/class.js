@@ -10,7 +10,7 @@ class User {
 }
 
 class Images extends User {
-    constructor(hinh_id, nguoi_dung_id, ten_hinh, duong_dan){
+    constructor(hinh_id, nguoi_dung_id, ten_hinh, duong_dan) {
         super(nguoi_dung_id);
         this.hinh_id = hinh_id;
         this.ten_hinh = ten_hinh;
@@ -19,12 +19,13 @@ class Images extends User {
 }
 
 class New extends User {
-    constructor(bao_id, nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung) {
+    constructor(bao_id, nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung, hinh) {
         super(nguoi_dung_id);
         this.bao_id = bao_id;
         this.hinh_id = hinh_id;
         this.tieu_de_bao = tieu_de_bao;
         this.noi_dung = noi_dung;
+        this.hinh = hinh;
     }
 }
 

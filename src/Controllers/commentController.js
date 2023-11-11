@@ -2,17 +2,17 @@ import sequelize from "../Models/index.js";
 import initModels from "../Models/init-models.js";
 const model = initModels(sequelize);
 
-const getComment = async(req, res) => {
+const getComment = async (req, res) => {
     try {
         const data = await model.binh_luan.findAll();
         res.send(data);
     } catch (error) {
-       console.log(error);
-       res.status(500).send("Lỗi khi lấy dữ liệu");
+        console.log(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
     }
 }
 
-const createComment = async(req, res) => {
+const createComment = async (req, res) => {
     try {
         let { nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung } = req.body;
         let newData = {
@@ -29,7 +29,7 @@ const createComment = async(req, res) => {
     }
 }
 
-const getCommentID = async(req, res) => {
+const getCommentID = async (req, res) => {
     const { binh_luan_id } = req.params;
     const data = await model.binh_luan.findOne({
         where: {
@@ -44,7 +44,7 @@ const updateComment = async (req, res) => {
         const { binh_luan_id } = req.params;
         const { nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung } = req.body;
         await model.binh_luan.update(
-            {nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung},
+            { nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung },
             {
                 where: {
                     binh_luan_id: binh_luan_id
@@ -62,7 +62,7 @@ const deleteComment = async (req, res) => {
     try {
         const { binh_luan_id } = req.params;
         await model.binh_luan.destroy({
-            where:{
+            where: {
                 binh_luan_id: binh_luan_id
             }
         });

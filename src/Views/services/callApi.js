@@ -67,6 +67,13 @@ async function apiGetNewsID(newID){
   })
 }
 
+async function apiGetSearchName(name){
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/news/get-search-name/${name}.html#newscontainer`
+  })
+}
+
 async function apiDeleteNew(newID){
   return await axios({
     method: "DELETE",
@@ -149,3 +156,4 @@ async function apiCreateImg(image) {
     throw error; 
   }
 }
+

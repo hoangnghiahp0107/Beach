@@ -1,28 +1,28 @@
-function getElement(selector){
+function getElement(selector) {
   return document.querySelector(selector);
 }
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   getAccount();
 });
 
 
-async function getAccount(){
-    try {
-        const response = await apiGetAccount();
-        const users = response.data.map((user)=> {
-            return new User(
-                user.nguoi_dung_id,
-                user.tai_khoan,
-                user.mat_khau,
-                user.ho_ten,
-                user.loai_nguoi_dung,
-                user.anh_dai_dien
-            );
-        });
-        renderAccount(users);
-    } catch (error) {
-        console.log("Lỗi từ máy chủ");
-    }
+async function getAccount() {
+  try {
+    const response = await apiGetAccount();
+    const users = response.data.map((user) => {
+      return new User(
+        user.nguoi_dung_id,
+        user.tai_khoan,
+        user.mat_khau,
+        user.ho_ten,
+        user.loai_nguoi_dung,
+        user.anh_dai_dien
+      );
+    });
+    renderAccount(users);
+  } catch (error) {
+    console.log("Lỗi từ máy chủ");
+  }
 }
 
 async function createUser() {
@@ -82,7 +82,7 @@ async function loginAccount() {
     if (response.status === 200) {
       const token = response.data;
       localStorage.setItem("accessToken", token);
-      
+
       Swal.fire('Đăng nhập thành công', '', 'success').then(() => {
         window.location.href = "/src/Views/index.html";
       });
@@ -140,90 +140,90 @@ async function createAccount() {
   }
 }
 
-  async function selectAccount(userID) {
-    try {
-      const response = await apiGetUserID(userID);
-      const user = response.data;
-      getElement("#tai_khoan").value = user.tai_khoan;
-      getElement("#mat_khau").value = user.mat_khau;
-      getElement("#ho_ten").value = user.ho_ten;
-      getElement("#loai_nguoi_dung").value = user.loai_nguoi_dung;
-      getElement("#anh_dai_dien").value = user.anh_dai_dien;
-      getElement("#tai_khoan").disabled = true;
+async function selectAccount(userID) {
+  try {
+    const response = await apiGetUserID(userID);
+    const user = response.data;
+    getElement("#tai_khoan").value = user.tai_khoan;
+    getElement("#mat_khau").value = user.mat_khau;
+    getElement("#ho_ten").value = user.ho_ten;
+    getElement("#loai_nguoi_dung").value = user.loai_nguoi_dung;
+    getElement("#anh_dai_dien").value = user.anh_dai_dien;
+    getElement("#tai_khoan").disabled = true;
 
-      getElement(".modal-footer").innerHTML = `
+    getElement(".modal-footer").innerHTML = `
         <button class="btn btn-success" onclick="updateAccount('${user.nguoi_dung_id}')">Cập nhật</button>
         <button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
       `;
-      $("#myModal").modal("show");
-    
+    $("#myModal").modal("show");
+
+  } catch (error) {
+    alert("Lấy thông tin người dùng thất bại");
+  }
+}
+
+async function updateAccount(userID) {
+  const user = {
+    ho_ten: getElement("#ho_ten").value,
+    mat_khau: getElement("#mat_khau").value,
+    loai_nguoi_dung: getElement("#loai_nguoi_dung"),
+    anh_dai_dien: getElement("#anh_dai_dien").value,
+  };
+
+  const willUpdate = await Swal.fire({
+    title: "Bạn có muốn cập nhật tài khoản?",
+    text: "Nhấn OK để xác nhận cập nhật.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "OK",
+    cancelButtonText: "Hủy",
+  });
+
+  if (willUpdate.isConfirmed) {
+    try {
+      await apiUpdateAccount(userID, user);
+      Swal.fire('Cập nhật tài khoản thành công', '', 'success').then(() => {
+        location.reload();
+      });
     } catch (error) {
-      alert("Lấy thông tin người dùng thất bại");
+      Swal.fire('Cập nhật tài khoản thất bại', '', 'error');
     }
   }
+}
 
-  async function updateAccount(userID) {
-    const user = {
-      ho_ten: getElement("#ho_ten").value,
-      mat_khau: getElement("#mat_khau").value,
-      loai_nguoi_dung: getElement("#loai_nguoi_dung"),
-      anh_dai_dien: getElement("#anh_dai_dien").value,
-    };
 
-    const willUpdate = await Swal.fire({
-      title: "Bạn có muốn cập nhật tài khoản?",
-      text: "Nhấn OK để xác nhận cập nhật.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "OK",
-      cancelButtonText: "Hủy",
-    });
-  
-    if (willUpdate.isConfirmed) {
-      try {
-        await apiUpdateAccount(userID, user);
-        Swal.fire('Cập nhật tài khoản thành công', '', 'success').then(() => {
-          location.reload();
-        });
-        } catch (error) {
-        Swal.fire('Cập nhật tài khoản thất bại', '', 'error');
-      }
+async function deleteAccount(userID) {
+  const willDelete = await Swal.fire({
+    title: "Bạn có muốn xóa tài khoản?",
+    text: "Nhấn OK để xác nhận xóa tài khoản.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "OK",
+    cancelButtonText: "Hủy",
+  });
+
+  if (willDelete.isConfirmed) {
+    try {
+      await apiDeleteAccount(userID);
+      Swal.fire('Xóa tài khoản thành công', '', 'success').then(() => {
+        window.location.reload();
+      });
+    } catch (error) {
+      Swal.fire('Xóa tài khoản thất bại', '', 'error');
     }
   }
-  
-  
-  async function deleteAccount(userID) {
-    const willDelete = await Swal.fire({
-      title: "Bạn có muốn xóa tài khoản?",
-      text: "Nhấn OK để xác nhận xóa tài khoản.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "OK",
-      cancelButtonText: "Hủy",
-    });
-  
-    if (willDelete.isConfirmed) {
-      try {
-        await apiDeleteAccount(userID);
-        Swal.fire('Xóa tài khoản thành công', '', 'success').then(() => {
-          window.location.reload();
-        });
-      } catch (error) {
-        Swal.fire('Xóa tài khoản thất bại', '', 'error');
-      }
-    }
-  }
-  
-  
-  function hidePassword(password) {
-    return '*'.repeat(password.length);
-  }
-  
-  function renderAccount(users) {
-    const html = users.reduce((result, user) => {
-      return (
-        result +
-        `
+}
+
+
+function hidePassword(password) {
+  return '*'.repeat(password.length);
+}
+
+function renderAccount(users) {
+  const html = users.reduce((result, user) => {
+    return (
+      result +
+      `
           <tr>
             <td>${user.nguoi_dung_id}</td>
             <td>${user.tai_khoan}</td>
@@ -236,12 +236,12 @@ async function createAccount() {
             </td>
           </tr>
         `
-      );
-    }, "");
-  
-    document.getElementById("tblDanhSachSP").innerHTML = html;
-  }
+    );
+  }, "");
+
+  document.getElementById("tblDanhSachSP").innerHTML = html;
+}
 
 
-  
+
 

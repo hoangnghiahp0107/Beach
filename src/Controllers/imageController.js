@@ -12,10 +12,10 @@ const getImages = async (req, res) => {
     }
 }
 
-const getImageID = async (req, res) =>{
-    const {hinh_id} = req.params;
+const getImageID = async (req, res) => {
+    const { hinh_id } = req.params;
     const data = await model.hinh_anh.findOne({
-        where:{
+        where: {
             hinh_id: hinh_id
         }
     });
@@ -54,7 +54,7 @@ const deleteImage = async (req, res) => {
     try {
         const { hinh_id } = req.params;
         await model.hinh_anh.destroy({
-            where:{
+            where: {
                 hinh_id: hinh_id
             }
         });
@@ -64,7 +64,5 @@ const deleteImage = async (req, res) => {
         res.status(500).send("Đã xảy ra lỗi trong quá trình xử lý.");
     }
 }
-
-
 
 export { getImages, deleteImage, getImageID, createImage }

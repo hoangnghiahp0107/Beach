@@ -1,18 +1,24 @@
 import sequelize from "../Models/index.js";
 import initModels from "../Models/init-models.js";
+import { Sequelize } from 'sequelize';
 const model = initModels(sequelize);
+const Op = Sequelize.Op;
 
-const getNews = async(req, res) => {
+const getNews = async (req, res) => {
     try {
-        const data = await model.bai_bao.findAll();
+        const data = await model.bai_bao.findAll(
+            {
+                include: ["hinh"]
+            }
+        );
         res.send(data);
     } catch (error) {
-       console.log(error);
-       res.status(500).send("Lỗi khi lấy dữ liệu");
+        console.log(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
     }
 }
 
-const createNews = async(req, res) => {
+const createNews = async (req, res) => {
     try {
         let { nguoi_dung_id, hinh_id, tieu_de_bao, noi_dung } = req.body;
         let newData = {
@@ -29,10 +35,10 @@ const createNews = async(req, res) => {
     }
 }
 
-const getNewsId = async(req, res) => {
-    const {bao_id} = req.params;
+const getNewsId = async (req, res) => {
+    const { bao_id } = req.params;
     const data = await model.bai_bao.findOne({
-        where:{
+        where: {
             bao_id: bao_id
         }
     });
@@ -43,13 +49,13 @@ const deleteNew = async (req, res) => {
     try {
         const { bao_id } = req.params;
         await model.binh_luan.destroy({
-            where:{
+            where: {
                 bao_id: bao_id
             }
         })
-        
+
         await model.bai_bao.destroy({
-            where:{
+            where: {
                 bao_id: bao_id
             }
         })
@@ -81,4 +87,16 @@ const updateNew = async (req, res) => {
     }
 }
 
-export {getNews, createNews, getNewsId, deleteNew, updateNew}
+const getSearchName = async (req, res) => {
+    const { tieu_de_bao } = req.params;
+    const data = await model.bai_bao.findAll({
+        where: {
+            tieu_de_bao: {
+                [Op.like]: `%${tieu_de_bao}%`
+            }
+        }
+    });
+    res.send(data);
+}
+
+export { getNews, createNews, getNewsId, deleteNew, updateNew, getSearchName }
