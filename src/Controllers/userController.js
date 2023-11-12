@@ -66,6 +66,27 @@ const login = async (req, res) => {
   }
 }
 
+const logout = async (req, res) => {
+  try {
+    // Lấy token từ request header hoặc từ body (tùy thuộc vào cách bạn thực hiện authentication)
+    const token = req.headers.authorization || req.body.token;
+
+    if (!token) {
+      return res.status(401).send("Token không hợp lệ");
+    }
+
+    // Thêm token vào danh sách đen (blacklist)
+    // Ở đây bạn có thể lưu trữ danh sách đen trong cơ sở dữ liệu hoặc bộ nhớ tạm thời, tùy thuộc vào yêu cầu của bạn
+    // Ví dụ sử dụng một biến toàn cục để lưu trữ danh sách đen
+    blacklistedTokens.push(token);
+
+    res.status(200).send("Đã đăng xuất thành công");
+  } catch (error) {
+    res.status(500).send("Đã có lỗi trong quá trình xử lý");
+  }
+};
+
+
 const getUser = async (req, res) => {
   try {
     const data = await model.nguoi_dung.findAll();
@@ -143,4 +164,4 @@ const updateUser = async (req, res) => {
   }
 }
 
-export { signUp, login, getUser, getUserID, deleteUser, updateUser }
+export { signUp, login, getUser, getUserID, deleteUser, updateUser, logout }

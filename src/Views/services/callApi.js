@@ -30,6 +30,26 @@ async function apiLoginAccount(user) {
   });
 }
 
+async function apiLogout(token) {
+  try {
+    const response = await axios({
+      method: 'POST',
+      url: `${URL}/api/auth/logout`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    
+    if (response.status === 200) {
+      console.log('Đã đăng xuất thành công');
+    } else {
+      console.log('Đăng xuất không thành công');
+    }
+  } catch (error) {
+    console.error('Lỗi trong quá trình xử lý đăng xuất', error);
+  }
+}
+
 async function apiDeleteAccount(userID){
   return await axios({
     method: "DELETE",
@@ -111,6 +131,13 @@ async function apiGetCommentID(commentID){
   })
 }
 
+async function apiGetCommentDetails(baoID){
+  return await axios({
+    method: "GET",
+    url: `${URL}/api/comment/get-comment-details/${baoID}`
+  })
+}
+
 async function apiDeleteComment(commentID){
   return await axios({
     method: "DELETE",
@@ -156,4 +183,14 @@ async function apiCreateImg(image) {
     throw error; 
   }
 }
+
+async function apiUpdateImg(imageID, images) {
+  return await axios({
+    method: "PUT",
+    url: `${URL}/api/image/update-image/${imageID}`,
+    data: images
+  });
+}
+
+
 

@@ -494,6 +494,18 @@ body.dark {
     padding-bottom: 30px;
 }
 
+.page{
+    color: black;
+    text-decoration: none;
+    list-style: none;
+}
+
+.page:hover{
+    color: black;
+    text-decoration: none;
+    list-style: none;
+}
+
 .card {
     border-radius: 20px;
     overflow: hidden;
@@ -710,4 +722,24 @@ small {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.title-details{
+    font-size:40px;
+    font-weight: 800;
+    color: black;
+}
+
+.container.details{
+    width: 700px;
+    margin: 30px auto;
+}
+
+.card-image.hinhAnh{
+    margin: 30px 0;
+    height: 300px;
+}
+
+.bg-headerdetails{
+    background-color: currentColor;
 }

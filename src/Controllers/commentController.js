@@ -34,7 +34,18 @@ const getCommentID = async (req, res) => {
     const data = await model.binh_luan.findOne({
         where: {
             binh_luan_id: binh_luan_id
-        }
+        },
+    });
+    res.send(data);
+}
+
+const getCommentDetailsID = async (req, res) => {
+    const { bao_id } = req.params;
+    const data = await model.binh_luan.findOne({
+        where: {
+            bao_id: bao_id
+        },
+        include: ["nguoi_dung"]
     });
     res.send(data);
 }
@@ -73,4 +84,4 @@ const deleteComment = async (req, res) => {
     }
 }
 
-export { getComment, createComment, getCommentID, updateComment, deleteComment }
+export { getComment, createComment, getCommentID, updateComment, deleteComment, getCommentDetailsID }

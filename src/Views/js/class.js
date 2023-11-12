@@ -30,10 +30,11 @@ class New extends User {
 }
 
 class Comment extends New {
-    constructor(binh_luan_id, nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung) {
-        super(nguoi_dung_id, bao_id);
+    constructor(binh_luan_id, nguoi_dung_id, bao_id, ngay_binh_luan, noi_dung, nguoi_dung) {
+        super(bao_id,nguoi_dung_id);
         this.binh_luan_id = binh_luan_id;
         this.ngay_binh_luan = ngay_binh_luan;
         this.noi_dung = noi_dung;
+        this.nguoi_dung = nguoi_dung
     }
 }

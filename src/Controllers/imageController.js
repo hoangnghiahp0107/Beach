@@ -65,4 +65,32 @@ const deleteImage = async (req, res) => {
     }
 }
 
-export { getImages, deleteImage, getImageID, createImage }
+const updateImage = async (req, res) => {
+    try {
+        const { hinh_id } = req.params;
+        const { nguoi_dung_id, ten_hinh } = req.body;
+
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).send("Vui lòng chọn ảnh khác để thay đổi");
+        }
+
+        const duong_dan = req.files[0].filename;
+
+        await model.hinh_anh.update(
+            { nguoi_dung_id, ten_hinh, duong_dan },
+            {
+                where: {
+                     hinh_id: hinh_id 
+                }
+            }
+        );
+
+        res.send("Cập nhật hình ảnh thành công");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(`Lỗi trong quá trình xử lý: ${error.message}`);
+    }
+}
+
+
+export { getImages, deleteImage, getImageID, createImage, updateImage }

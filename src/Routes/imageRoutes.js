@@ -1,5 +1,5 @@
 import express from "express";
-import { getImages, getImageID, createImage, deleteImage } from "../Controllers/imageController.js";
+import { getImages, getImageID, createImage, deleteImage, updateImage } from "../Controllers/imageController.js";
 import multer from "multer";
 
 const imageRoutes = express.Router();
@@ -20,6 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 imageRoutes.post("/upload", upload.array("file"), createImage);
+imageRoutes.put("/update-image/:hinh_id", upload.array("file"), updateImage);
 
 
 export default imageRoutes

@@ -40,7 +40,8 @@ const getNewsId = async (req, res) => {
     const data = await model.bai_bao.findOne({
         where: {
             bao_id: bao_id
-        }
+        },
+        include: ["hinh"]
     });
     res.send(data);
 }

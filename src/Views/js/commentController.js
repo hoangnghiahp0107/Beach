@@ -25,6 +25,9 @@ async function getComment() {
 }
 
 async function taoComment() {
+  if (!validate()) {
+    return; 
+  }
   const comments = {
     nguoi_dung_id: getElement("#nguoi_dung_id").value,
     bao_id: getElement("#bao_id").value,
@@ -74,6 +77,9 @@ async function selectComment(commentID) {
 }
 
 async function updateComment(commentID) {
+  if (!validate()) {
+    return; 
+  }
   const ngay_binh_luan = new Date(getElement("#ngay_binh_luan").value + "Z").toISOString();
   const comment = {
     nguoi_dung_id: getElement("#nguoi_dung_id").value,
@@ -137,7 +143,7 @@ function renderComments(comments) {
               <td>${comment.ngay_binh_luan}</td>
               <td>${comment.noi_dung}</td>
               <td style="display: flex">
-                <button class="btn btn-primary mx-2" onclick="selectComment('${comment.binh_luan_id}')">Xem</button>
+                <button class="btn btn-primary mx-2" onclick="selectComment('${comment.binh_luan_id}'); resetTB();">Xem</button>
                 <button class="btn btn-danger" onclick="deleteComment('${comment.binh_luan_id}')">Xoá</button>
               </td>
             </tr>
@@ -148,6 +154,79 @@ function renderComments(comments) {
   document.getElementById("tblDanhSachSP").innerHTML = html;
 }
 
+function clearModalInputs() {
+  document.getElementById("nguoi_dung_id").value = "";
+  document.getElementById("bao_id").value = "";
+  document.getElementById("ngay_binh_luan").value = "";
+  document.getElementById("noi_dung").value = "";
 
 
+  document.getElementById("tbAccount").textContent = "";
+  document.getElementById("tbNews").textContent = "";
+  document.getElementById("tbNgayBinhLuan").textContent = "";
+  document.getElementById("tbContent").textContent = "";
+}
 
+document.getElementById("btnThemSP").addEventListener("click", clearModalInputs);
+
+function validate() {
+  let isValid = true;
+
+  let nguoi_dung_id = getElement("#nguoi_dung_id").value;
+  if (!nguoi_dung_id.trim()) {
+    isValid = false;
+    getElement("#tbAccount").innerHTML = "Vui lòng nhập ID của người dùng!";
+  } else {
+    getElement("#tbAccount").innerHTML = "";
+  }
+
+  let bao_id = getElement("#bao_id").value;
+  if (!bao_id.trim()) {
+    isValid = false;
+    getElement("#tbNews").innerHTML = "Vui lòng nhập ID của bài báo!";
+  } else {
+    getElement("#tbNews").innerHTML = "";
+  }
+
+  let ngay_binh_luan = getElement("#ngay_binh_luan").value;
+  if (!ngay_binh_luan.trim()) {
+    isValid = false;
+    getElement("#tbNgayBinhLuan").innerHTML = "Vui lòng nhập ngày giờ bình luận!";
+  } else {
+    getElement("#tbNgayBinhLuan").innerHTML = "";
+  }
+
+  let noi_dung = getElement("#noi_dung").value;
+  if (!noi_dung.trim()) {
+    isValid = false;
+    getElement("#tbContent").innerHTML = "Vui lòng nhập nội dung!";
+  } else {
+    getElement("#tbContent").innerHTML = "";
+  }
+
+  return isValid;
+}
+
+function resetTB(){
+  getElement("#tbAccount").textContent = " ";
+  getElement("#tbNews").textContent=" ";
+  getElement("#tbNgayBinhLuan").textContent=" ";
+  getElement("#tbContent").textContent=" ";
+}
+
+async function logout() {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    await apiLogout(token);
+
+    localStorage.removeItem("accessToken");
+
+    Swal.fire('Đăng xuất thành công', '', 'success').then(() => {
+      window.location.href = "/src/Views/index.html"; 
+    });
+  } catch (error) {
+    Swal.fire('Lỗi khi đăng xuất', '', 'error');
+    console.error(error);
+  }
+}

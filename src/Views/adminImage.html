@@ -28,7 +28,7 @@
     </ul>
     <ul class="side-menu">
       <li>
-        <a href="#" class="logout">
+        <a href="#" class="logout" onclick="logout()">
           <i class="fa-solid fa-right-from-bracket"></i>
           Đăng xuất
         </a>
@@ -68,13 +68,13 @@
               <input type="number" name="nguoi_dung_id" id="nguoi_dung_id" class="form-control input-sm"
                 placeholder="Người dùng ID">
             </div>
-            <span class="sp-thongbao text-danger" id="tbName">&zwj;</span>
-
+            <span class="sp-thongbao text-danger" id="tbAccount">&zwj;</span>
+            <br>
             <div class="input-group">
               <input type="text" name="ten_hinh" id="ten_hinh" class="form-control input-sm" placeholder="Tên hình">
             </div>
-            <span class="sp-thongbao text-danger" id="tbNgayBinhLuan">&zwj;</span>
-
+            <span class="sp-thongbao text-danger" id="tbImage">&zwj;</span>
+            <br>
             <div class="input-group">
               <input type="file" name="duong_dan" id="duong_dan" onchange="displaySelectedFile(this)"
                 style="display: none" />
@@ -83,10 +83,10 @@
               </div>
               <input type="text" id="duong_dan_text" class="form-control" placeholder="Đường dẫn" readonly />
             </div>
-            <span class="sp-thongbao text-danger" id="tbImage">&zwj;</span>
+            <span class="sp-thongbao text-danger" id="tbLink">&zwj;</span>
             <div class="modal-content-popup"></div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" id="n">
             <button id="btnThemNV" type="button" onclick="createImage()" class="btn btn-success">Thêm hình ảnh</button>
           </div>
         </div>
