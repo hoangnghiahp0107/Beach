@@ -133,11 +133,21 @@ async function apiGetNews() {
 }
 
 async function apiCreateNews(news) {
-  return await axios({
-    method: "POST",
-    url: `${URL}/api/news/create-news`,
-    data: news
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/news/create-news`,
+      data: news,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating comment:", error);
+    throw error;
+  }
 }
 
 async function apiGetNewsID(newID){
@@ -160,20 +170,39 @@ async function apiGetSearchName(name) {
   }
 }
 
-
-async function apiDeleteNew(newID){
-  return await axios({
-    method: "DELETE",
-    url: `${URL}/api/news/delete-new/${newID}`
-  })
+async function apiDeleteNew(newID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE",
+      url: `${URL}/api/news/delete-new/${newID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting user account:", error);
+    throw error;
+  }
 }
 
 async function apiUpdateNew(newID, news) {
-  return await axios({
-    method: "PUT",
-    url: `${URL}/api/news/update-new/${newID}`,
-    data: news
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "PUT",
+      url: `${URL}/api/news/update-new/${newID}`,
+      data: news,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user account:", error);
+    throw error;
+  }
 }
 
 async function apiGetComment() {
@@ -195,12 +224,23 @@ async function apiGetComment() {
 }
 
 async function apiCreateComment(comment) {
-  return await axios({
-    method: "POST",
-    url: `${URL}/api/comment/create-comment`,
-    data: comment
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/comment/create-comment`,
+      data: comment,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating comment:", error);
+    throw error;
+  }
 }
+
 
 async function apiGetCommentID(commentID){
   return await axios({
@@ -216,19 +256,39 @@ async function apiGetCommentDetails(baoID){
   })
 }
 
-async function apiDeleteComment(commentID){
-  return await axios({
-    method: "DELETE",
-    url: `${URL}/api/comment/delete-comment/${commentID}`
-  })
+async function apiDeleteComment(commentID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE",
+      url: `${URL}/api/comment/delete-comment/${commentID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting user account:", error);
+    throw error;
+  }
 }
 
 async function apiUpdateComment(commentID, comment) {
-  return await axios({
-    method: "PUT",
-    url: `${URL}/api/comment/update-comment/${commentID}`,
-    data: comment
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "PUT",
+      url: `${URL}/api/comment/update-comment/${commentID}`,
+      data: comment,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user account:", error);
+    throw error;
+  }
 }
 
 async function apiGetImage() {
@@ -256,16 +316,33 @@ async function apiGetImgID(imageID){
   })
 }
 
-async function apiDeleteImage(imageID){
-  return await axios({
-    method: "DELETE",
-    url: `${URL}/api/image/delete-image/${imageID}`
-  })
+async function apiDeleteImage(imageID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE",
+      url: `${URL}/api/image/delete-image/${imageID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting user account:", error);
+    throw error;
+  }
 }
-
 async function apiCreateImg(image) {
   try {
-    const response = await axios.post(`${URL}/api/image/upload`, image);
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/image/upload`,
+      data: image,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error('Error during image upload:', error);
@@ -274,11 +351,21 @@ async function apiCreateImg(image) {
 }
 
 async function apiUpdateImg(imageID, images) {
-  return await axios({
-    method: "PUT",
-    url: `${URL}/api/image/update-image/${imageID}`,
-    data: images
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "PUT",
+      url: `${URL}/api/image/update-image/${imageID}`,
+      data: images,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user account:", error);
+    throw error;
+  }
 }
 
 

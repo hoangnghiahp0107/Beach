@@ -6,10 +6,10 @@ const newsRoutes = express.Router();
 
 newsRoutes.get("/get-news", checkRole ,getNews);
 newsRoutes.get("/get-news-index", getNews);
-newsRoutes.post("/create-news", createNews);
+newsRoutes.post("/create-news", checkRole,createNews);
 newsRoutes.get("/new-id/:bao_id", getNewsId);
-newsRoutes.delete("/delete-new/:bao_id", deleteNew);
-newsRoutes.put("/update-new/:bao_id", updateNew);
+newsRoutes.delete("/delete-new/:bao_id", checkRole, deleteNew);
+newsRoutes.put("/update-new/:bao_id", checkRole,updateNew);
 newsRoutes.get("/get-search-name/:tieu_de_bao", getSearchName)
 
 export default newsRoutes

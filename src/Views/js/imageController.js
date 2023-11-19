@@ -77,7 +77,9 @@ async function createImage() {
     try {
       await apiCreateImg(formData);
       Swal.fire('Thêm ảnh thành công', '', 'success').then(() => {
-        location.reload();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       });
     } catch (error) {
       Swal.fire('Thêm ảnh thất bại', '', 'error');
