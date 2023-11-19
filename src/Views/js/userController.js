@@ -60,10 +60,10 @@ async function loginAccount() {
   
       if (response.status === 200) {
         const token = response.data;
-        localStorage.setItem("accessToken", token);
+        localStorage.setItem("localStorageToken", token);
   
         Swal.fire('Đăng nhập thành công', '', 'success').then(() => {
-          window.location.href = "/src/Views/index.html";
+          window.location.href = "index.html";
         });
       } else if (response.status === 400) {
         Swal.fire('Tài khoản hoặc mật khẩu không đúng', '', 'error');
@@ -77,4 +77,8 @@ async function loginAccount() {
   }
 
   
-  
+  function handleSearch(event) {
+    event.preventDefault(); 
+    const searchTerm = document.querySelector('.search-bar input[name="q"]').value;
+    getNewSpaperByName(searchTerm);
+}

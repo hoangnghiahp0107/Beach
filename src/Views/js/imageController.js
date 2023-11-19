@@ -9,17 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
 async function getImages() {
   try {
     const response = await apiGetImage();
-    const images = response.data.map((image) => {
-      return new Images(
-        image.hinh_id,
-        image.nguoi_dung_id,
-        image.ten_hinh,
-        image.duong_dan
-      );
-    });
+    const images = response.map((image) => new Images(
+      image.hinh_id,
+      image.nguoi_dung_id,
+      image.ten_hinh,
+      image.duong_dan
+    ));
     renderImages(images);
   } catch (error) {
-    console.log("Lỗi từ máy chủ");
+    console.log("Lỗi từ máy chủ", error);
   }
 }
 
@@ -219,14 +217,14 @@ function resetTB(){
 
 async function logout() {
   try {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("localStorageToken");
 
     await apiLogout(token);
 
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("localStorageToken");
 
     Swal.fire('Đăng xuất thành công', '', 'success').then(() => {
-      window.location.href = "/src/Views/index.html"; 
+      window.location.href = "index.html"; 
     });
   } catch (error) {
     Swal.fire('Lỗi khi đăng xuất', '', 'error');

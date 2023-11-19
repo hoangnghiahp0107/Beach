@@ -61,8 +61,6 @@ async function getCommentsDetails(newID) {
     }
 }
 
-
-
 function renderNewsID(news) {
     const html = news.reduce((result, product) => {
         const duongDanHinh = product.hinh && product.hinh.duong_dan ? product.hinh.duong_dan : '';
@@ -80,21 +78,48 @@ function renderNewsID(news) {
     document.getElementById("newspaperid").innerHTML = html;
 }
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+  
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+  }
+
 function renderComment(news) {
     const html = news.reduce((result, product) => {
         const duongDanHinh = product.nguoi_dung && product.nguoi_dung.anh_dai_dien ? product.nguoi_dung.anh_dai_dien : '';
         return (
             result +
             ` 
-                <div class="container details d-flex justify-content-left align-items-center" style="border: 1px solid black"> 
-                    <div style="padding: 50px">
-                        <img style="width: 30px; height: 30px; border-radius: 50%;" src="../../../public/img/${duongDanHinh}" alt="Hình ảnh">
-                        <p>${product.ngay_binh_luan}</p>
+                <section id="cm_part">
+                    <div class="container mt-5">
+                        <div class="d-flex justify-content-center row">
+                            <div class="col-md-8">
+                                <div class="bg-white p-2"> <!-- Div Phan Comment-->
+                                <img src="../../../public/img/${duongDanHinh}" alt="Hình ảnh" width="60" class="rounded-circle">
+                                <div class="d-flex flex-row user-info"> 
+                                    <div class="d-flex flex-column justify-content-start ml-2" style="float: right; width: 93%;"> <!-- Phan text cm voi Ten user-->
+                                    <p class="d-block font-weight-bold name">${product.nguoi_dung.ho_ten}</p>
+                                    <p class="d-block date">${formatDate(product.ngay_binh_luan)}</p>
+                                    <div class="button-edit-delete"><button class="btn btn-success btn-sm shadow-none" type="button"><i class="fa-solid fa-x"></i></button>
+                                        <button class="btn btn-success btn-sm shadow-none" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="comment-text">${product.noi_dung}</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="padding-left: 30px">
-                        <p>${product.noi_dung}</p>
-                    </div>
-                </div>
+                </section>
             `
         );
     }, "");

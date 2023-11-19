@@ -9,19 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
 async function getAccount() {
   try {
     const response = await apiGetAccount();
-    const users = response.data.map((user) => {
-      return new User(
-        user.nguoi_dung_id,
-        user.tai_khoan,
-        user.mat_khau,
-        user.ho_ten,
-        user.loai_nguoi_dung,
-        user.anh_dai_dien
-      );
-    });
+    const users = response.map((user) => new User(
+      user.nguoi_dung_id,
+      user.tai_khoan,
+      user.mat_khau,
+      user.ho_ten,
+      user.loai_nguoi_dung,
+      user.anh_dai_dien
+    ));
     renderAccount(users);
   } catch (error) {
-    console.log("Lỗi từ máy chủ");
+    console.log("Lỗi từ máy chủ", error);
   }
 }
 
@@ -72,16 +70,15 @@ async function selectAccount(userID) {
   resetTB();
   try {
     const response = await apiGetUserID(userID);
-    const user = response.data;
-    getElement("#tai_khoan").value = user.tai_khoan;
-    getElement("#mat_khau").value = user.mat_khau;
-    getElement("#ho_ten").value = user.ho_ten;
-    getElement("#loai_nguoi_dung").value = user.loai_nguoi_dung;
-    getElement("#anh_dai_dien").value = user.anh_dai_dien;
+    getElement("#tai_khoan").value = response.tai_khoan;
+    getElement("#mat_khau").value = response.mat_khau;
+    getElement("#ho_ten").value = response.ho_ten;
+    getElement("#loai_nguoi_dung").value = response.loai_nguoi_dung;
+    getElement("#anh_dai_dien").value = response.anh_dai_dien;
     getElement("#tai_khoan").disabled = true;
 
     getElement(".modal-footer").innerHTML = `
-        <button class="btn btn-success" onclick="updateAccount('${user.nguoi_dung_id}')">Cập nhật</button>
+        <button class="btn btn-success" onclick="updateAccount('${response.nguoi_dung_id}')">Cập nhật</button>
         <button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
       `;
     $("#myModal").modal("show");
@@ -269,14 +266,14 @@ function resetTB(){
 
 async function logout() {
   try {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("localStorageToken");
 
     await apiLogout(token);
 
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("localStorageToken");
 
     Swal.fire('Đăng xuất thành công', '', 'success').then(() => {
-      window.location.href = "/src/Views/index.html"; 
+      window.location.href = "index.html"; 
     });
   } catch (error) {
     Swal.fire('Lỗi khi đăng xuất', '', 'error');

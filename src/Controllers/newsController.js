@@ -95,7 +95,8 @@ const getSearchName = async (req, res) => {
             tieu_de_bao: {
                 [Op.like]: `%${tieu_de_bao}%`
             }
-        }
+        },
+        include: ["hinh"]
     });
     res.send(data);
 }

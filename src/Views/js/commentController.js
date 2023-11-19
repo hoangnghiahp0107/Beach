@@ -9,15 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
 async function getComment() {
   try {
     const response = await apiGetComment();
-    const comments = response.data.map((comment) => {
-      return new Comment(
+    const comments = response.map((comment) =>  new Comment(
         comment.binh_luan_id,
         comment.nguoi_dung_id,
         comment.bao_id,
         comment.ngay_binh_luan,
         comment.noi_dung
-      );
-    });
+      ));
     renderComments(comments);
   } catch (error) {
     console.log("Lỗi từ máy chủ");
@@ -216,14 +214,14 @@ function resetTB(){
 
 async function logout() {
   try {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("localStorageToken");
 
     await apiLogout(token);
 
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("localStorageToken");
 
     Swal.fire('Đăng xuất thành công', '', 'success').then(() => {
-      window.location.href = "/src/Views/index.html"; 
+      window.location.href = "index.html"; 
     });
   } catch (error) {
     Swal.fire('Lỗi khi đăng xuất', '', 'error');

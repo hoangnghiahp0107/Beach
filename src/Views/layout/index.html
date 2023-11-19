@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../../public/img/Logo.png" />
+    <title>Aqua Future</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="bg-header">
+        <div class="container abc">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="../layout/index.html"><img class="logo" src="../../../public/img/Logo.png"
+                        alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link textfont" href="../layout/index.html">TRANG CHỦ<span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link textfont" href="#game">TRÒ CHƠI</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link textfont" href="#newscontainer">TIN TỨC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link textfont" href="#porfolio">HỖ TRỢ</a>
+                        </li>
+                        <li class="nav-item" data-href="https://hoangnghiahp0107.github.io/Beach/src/Views/layout/index.html">
+                            <a target="_blank"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhoangnghiahp0107.github.io%2FBeach%2Fsrc%2FViews%2Findex.html&amp;src=sdkpreparse"
+                                class="nav-link textfont">CHIA SẺ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link textfont" href="../layout/login.html">TÀI KHOẢN</a>
+                        </li>
+                    </ul>
+                    <form class="search-bar ml-3" onsubmit="handleSearch(event)">
+                        <input type="text" placeholder="Search" name="q">
+                        <button type="submit" onclick="window.location.href='index.html#newscontainer'">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--Head-->
+    <section class="banner">
+        <video muted autoplay loop src="../../../public/video/BackGround.mp4"></video>
+        <img class="banner_title" src="../../../public/img/title_Logo.png" alt="">
+        <img class="banner_bot" src="../../../public/img/body.png" alt="" style="width: 100%;">
+    </section>
+    <!--Chi Tiet-->
+    <section id="about">
+        <img class="divider" src="../../../public/img/about_div.png" alt="" />
+        <div class="about__dad">
+            <div
+                class="about__left wow animate__animated animate__fadeInLeft animate__delay-1s">
+                <img  src="../../../public/img/back_1.jpg" alt="">
+            </div>
+            <div class="about__right">
+                <div class="about__title wow animate__animated animate__fadeInRight animate__delay-2s">
+                    <h2>AQUA FUTURE
+                    </h2>
+                </div>
+                <div class="about__body wow animate__animated animate__fadeInUp animate__delay-3s">
+                    <p>Môi trường biển hiện đang bị đe dọa làm ảnh hưởng đến các sinh vật sống khác. Hơn thế nửa là
+                        chúng ta đang phải sống trong một môi trường vô cùng ô nhiễm vì thế hãy chung tay bảo vệ biển
+                        nào!</p>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Chúng tôi ủng hộ các chương trình tạo cơ hội phát triển cho con người.</span>
+                    <br>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Theo dõi các sự kiện và xu hướng. Cập nhật tin tức gần đây của chúng tôi.
+                    </span>
+                    <br>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Cuối cùng, tất cả đều phụ thuộc vào con người. Tạo ra một đội ngũ chiến thắng.
+                    </span>
+                    <br>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Theo dõi các sự kiện và xu hướng. Cập nhật tin tức gần đây của chúng tôi.
+                    </span>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tin Tuc-->
+    <section id="newscontainer">
+        <img class="divider" src="../../../public/img/news_div.png" alt="" />
+        <div class="container">
+            <div class="cards" id="newspaper"></div>
+        </div>
+    </section>
+    <!-- Game -->
+    <section id="game">
+        <img class="divider" src="../../../public/img/game_div.png" alt="" />
+        <div class="container gamecard">
+            <div class="carousel-game">
+              <div class="slide1">
+                <div class="item">
+                  <img src="../../../public/img/gam1.png"> 
+                  <button type="submit" class="playb" onclick="window.location.href='../games/DDRR/ddrrr.html'"><i class="fa-solid fa-play"></i></button>    
+                 </div>
+              </div>
+              <div class="slide2">
+                <div class="item">
+                    <img src="../../../public/img/gam2.png"> 
+                    <button type="submit" class="playb" onclick="window.location.href='../games/Insaniaquarium webgl remake (Nhom7)/Insaniquarium.html'"><i class="fa-solid fa-play"></i></button>
+                  </div>  
+              </div>
+              <div class="slide3">
+                <div class="item">
+                    <img src="../../../public/img/gam3.png"> 
+                    <button class="playb" onclick="window.location.href='../games/CollectAll/NoMoreTrash.html'"><i class="fa-solid fa-play"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- Porfolio-->
+    <section id="porfolio">
+        <img class="divider abc" src="../../../public/img/z4884056667858_5b366506b3c5d8f66da63713fdc4eb16.jpg" alt="" />
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="container d-flex align-items-center">
+                    <div class="porfolio-left">
+                        <img class="avatar" src="../../../public/img/nghiac3.png" alt="">
+                    </div>
+                    <div class="porfolio-right">
+                        <h2>Hello I'm</h2>
+                        <h1>Nguyễn Hoàng Nghĩa</h1>
+                        <p>Back-End Developer</p>
+                        <p>Fueled by a fervor for crafting efficient and groundbreaking solutions, I specialize in crafting resilient server-side applications. Let's collaborate and delve into how I can elevate and add value to your projects.</p>
+                        <a href="https://www.facebook.com/hoangnghia.0107"><button type="button" class="btn contact">Contact Me</button></a>
+                        
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container d-flex align-items-center justify-content-center">
+                    <div class="porfolio-left">
+                        <img class="avatar" src="../../../public/img/huyc33-removebg-preview.png" alt="">
+                    </div>
+                    <div class="porfolio-right">
+                        <h2>Hello I'm</h2>
+                        <h1>Nguyễn Hồ Ngọc Huy</h1>
+                        <p>Game Developer</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non qui voluptatum officia! Itaque explicabo magni quas maiores alias odio atque eos, eligendi cumque dolorem dicta repellat a laudantium? In, accusantium.</p>
+                        <a href="https://www.facebook.com/hhho1201"><button type="button" class="btn contact">Contact Me</button></a>
+                        
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container d-flex align-items-center">
+                    <div class="porfolio-left">
+                        <img class="avatar" src="../../../public/img/khoac3.png" alt="">
+                    </div>
+                    <div class="porfolio-right">
+                        <h2>Hello I'm</h2>
+                        <h1>Nguyễn Phan Anh Khoa</h1>
+                        <p>Front-End Developer</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non qui voluptatum officia! Itaque explicabo magni quas maiores alias odio atque eos, eligendi cumque dolorem dicta repellat a laudantium? In, accusantium.</p>
+                        <a href="https://www.facebook.com/anhkhoa.nguyenphan.142"><button type="button" class="btn contact">Contact Me</button></a>
+                        
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container d-flex align-items-center">
+                    <div class="porfolio-left">
+                        <img class="avatar" src="../../../public/img/vietc3.png" alt="">
+                    </div>
+                    <div class="porfolio-right">
+                        <h2>Hello I'm</h2>
+                        <h1>Nguyễn Quốc Việt</h1>
+                        <p>Front-End Developer</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non qui voluptatum officia! Itaque explicabo magni quas maiores alias odio atque eos, eligendi cumque dolorem dicta repellat a laudantium? In, accusantium.</p>
+                        <a href="https://www.facebook.com/profile.php?id=100084080343656"><button type="button" class="btn contact">Contact Me</button></a>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </section>
+    <footer>
+        <div class="container" style="border-top: 1px solid gray;">
+            <div class="row">
+                <div class="col-sm-3 title">
+                    <img class="logo mx-2" src="../../../public/img/Logo.png" alt=""><span><b>AQUA</b></span> <span><b style="color: #58629b;"> FUTURE</b></span>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Product</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Legal</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Resources</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Company</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-sm-8 title">
+                        <small>© My Group 7 <span id="year"></span>, All rights reserved</small>
+                    </div>
+                    <div class="col-sm-2 space">
+                        <div class="wrapper-footer">
+                            <div class="icon-footer facebook">
+                                    <i class="fab fa-facebook-f"></i> 
+                                    <a href="https://www.facebook.com/"><span class="tooltip">Facebook</span></a>
+                                </a>
+                            </div>
+                            <div class="icon-footer mx-2 github">
+                                <i class="fab fa-github"></i>
+                                <a href="https://www.github.com"><span class="tooltip">Github</span></a>
+                            </div>
+                            <div class="icon-footer mx-2 twitter">
+                                <i class="fab fa-twitter"></i>
+                                <a href="https://www.twitter.com"><span class="tooltip">Twitter</span></a>
+                            </div>
+                            <div class="icon-footer mx-2 instagram">
+                                <i class="fab fa-instagram"></i>
+                                <a href="https://www.instagram.com"><span class="tooltip">Instagram</span></a>
+                            </div>
+                            <div class="icon-footer mx-2 youtube">
+                                <i class="fab fa-youtube"></i>
+                                <a href="https://www.youtube.com"><span class="tooltip">Youtube</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="backToTop cd-top text-replace js-cd-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=312188944597611"
+        nonce="l02TyCPA"></script>
+    <script src="../js/util.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+        integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/class.js"></script>
+    <script src="../services/callApi.js"></script>
+    <script src="../js/indexController.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <script src="../js/game.js"></script>
+</body>
+</html>

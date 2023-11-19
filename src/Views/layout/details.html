@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../public/img/Logo.png" />
+    <title>Aqua Future</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/src/Views/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #cm_part textarea{
+          width: 100%;
+          height: 40px;
+        }
+        #cm_part button{
+            width: 50px;
+            height: 40px;
+            border-radius: 0%;
+        }
+        body{
+          background: #f1f1f1;
+    
+        }
+        .button-edit-delete{
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 80%;
+            margin-top: 10px;
+        }
+        .comment-text{
+          text-align: left;
+          font-size:15px;
+        }
+        .fs-12{
+          font-size:12px;
+        }
+        .shadow-none{
+          box-shadow:none;
+        }
+        .name{
+          text-align: left;
+          color:#007bff;
+        }
+        .cursor:hover{
+          color:blue;
+        }
+        .cursor{
+          cursor:pointer;
+        }
+        .textarea{
+          width: 100%;
+          resize:none;
+          border-radius: 0%;
+        }
+        .date{
+      
+          text-align: left;
+          font-size:11px;
+        }
+        .rounded-circle{
+          float: left;
+          width: 7%;
+        }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top bg-headerdetails">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-dark">
+              <a class="navbar-brand" href="../layout/index.html"><img class="logo" src="../../../public/img/Logo.png" alt=""></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a class="nav-link textfont" href="../layout/index.html">TRANG CHỦ<span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link textfont" href="../layout/index.html#game">TRÒ CHƠI</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link textfont" href="../layout/index.html#newscontainer">TIN TỨC</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link textfont" href="../layout/index.html#porfolio">HỖ TRỢ</a>
+                      </li>
+                      <li class="nav-item" data-href="https://hoangnghiahp0107.github.io/Beach/src/Views/index.html">
+                          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhoangnghiahp0107.github.io%2FBeach%2Fsrc%2FViews%2Findex.html&amp;src=sdkpreparse" class="nav-link textfont">CHIA SẺ</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link textfont" href="../Views/login.html">TÀI KHOẢN</a>
+                      </li>
+                  </ul>
+                  <form class="search-bar ml-3" onsubmit="handleSearch(event)">
+                      <input type="text" placeholder="Search" name="q">
+                      <button type="submit">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
+                  </form>
+              </div>
+          </nav>
+        </div>
+    </header>
+    <div id="newspaperid"></div>
+    <div id="comment"></div>
+    <div id="cm_part" class="container">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8">
+                <div class="mt-2 text-right d-flex">
+                    <textarea class="form-control shadow-none textarea"></textarea>
+                    <button class="btn btn-success btn-sm shadow-none" type="button"><i class="fa-regular fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="mt-5">
+        <div class="container" style="border-top: 1px solid gray;">
+            <div class="row">
+                <div class="col-sm-3 title">
+                    <img class="logo mx-2" src="../../../public/img/Logo.png" alt=""><span><b>AQUA</b></span> <span><b style="color: #58629b;"> FUTURE</b></span>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Product</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Legal</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Resources</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+                <div class="col-sm-2 title">
+                    <h2><b>Company</b></h2>
+                    <p>APi</p>
+                    <p>Pricing</p>
+                    <p>Document</p>
+                    <p>status</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-sm-8 title">
+                        <small>© My Group 7 <span id="year"></span>, All rights reserved</small>
+                    </div>
+                    <div class="col-sm-2 space">
+                        <div class="wrapper-footer">
+                            <div class="icon-footer facebook">
+                                    <i class="fab fa-facebook-f"></i> 
+                                    <a href="https://www.facebook.com/"><span class="tooltip">Facebook</span></a>
+                                </a>
+                            </div>
+                            <div class="icon-footer mx-2 github">
+                                <i class="fab fa-github"></i>
+                                <a href="https://www.github.com"><span class="tooltip">Github</span></a>
+                            </div>
+                            <div class="icon-footer mx-2 twitter">
+                                <i class="fab fa-twitter"></i>
+                                <a href="https://www.twitter.com"><span class="tooltip">Twitter</span></a>
+                            </div>
+                            <div class="icon-footer mx-2 instagram">
+                                <i class="fab fa-instagram"></i>
+                                <a href="https://www.instagram.com"><span class="tooltip">Instagram</span></a>
+                            </div>
+                            <div class="icon-footer mx-2 youtube">
+                                <i class="fab fa-youtube"></i>
+                                <a href="https://www.youtube.com"><span class="tooltip">Youtube</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="backToTop cd-top text-replace js-cd-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+        integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/util.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/class.js"></script>
+    <script src="../services/callApi.js"></script>
+    <script src="../js/detailsController.js"></script>
+  </body>
+</html>

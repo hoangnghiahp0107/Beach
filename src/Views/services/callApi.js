@@ -1,17 +1,39 @@
 const URL = "http://localhost:8080";
 
 async function apiGetAccount() {
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/auth/get-user`,
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken"); 
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/auth/get-user`,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    window.location.href = "error.html"; 
+    throw error;
+  }
 }
 
+
 async function apiGetUserID(userID) {
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/auth/user-id/${userID}`
-  })
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/auth/user-id/${userID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
 }
 
 async function apiCreateAccount(user) {
@@ -50,26 +72,64 @@ async function apiLogout(token) {
   }
 }
 
-async function apiDeleteAccount(userID){
-  return await axios({
-    method: "DELETE",
-    url: `${URL}/api/auth/delete-user/${userID}`
-  })
+async function apiDeleteAccount(userID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE",
+      url: `${URL}/api/auth/delete-user/${userID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting user account:", error);
+    throw error;
+  }
 }
 
 async function apiUpdateAccount(userID, user) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "PUT",
+      url: `${URL}/api/auth/update-user/${userID}`,
+      data: user,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user account:", error);
+    throw error;
+  }
+}
+
+async function apiGetNewsIndex() {
   return await axios({
-    method: "PUT",
-    url: `${URL}/api/auth/update-user/${userID}`,
-    data: user
+    method: "GET",
+    url: `${URL}/api/news/get-news-index`,
   });
 }
 
 async function apiGetNews() {
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/news/get-news`,
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken"); 
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/news/get-news`,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    window.location.href = "error.html"; 
+    throw error;
+  }
 }
 
 async function apiCreateNews(news) {
@@ -87,12 +147,19 @@ async function apiGetNewsID(newID){
   })
 }
 
-async function apiGetSearchName(name){
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/news/get-search-name/${name}`
-  })
+async function apiGetSearchName(name) {
+  try {
+      const response = await axios({
+          method: "GET",
+          url: `${URL}/api/news/get-search-name/${name}`
+      });
+      return response;
+  } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+  }
 }
+
 
 async function apiDeleteNew(newID){
   return await axios({
@@ -110,10 +177,21 @@ async function apiUpdateNew(newID, news) {
 }
 
 async function apiGetComment() {
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/comment/get-comment`,
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken"); 
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/comment/get-comment`,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    window.location.href = "error.html"; 
+    throw error;
+  }
 }
 
 async function apiCreateComment(comment) {
@@ -154,10 +232,21 @@ async function apiUpdateComment(commentID, comment) {
 }
 
 async function apiGetImage() {
-  return await axios({
-    method: "GET",
-    url: `${URL}/api/image/get-images`,
-  });
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken"); 
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/image/get-images`,
+      headers: {
+        token: `${localStorageToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    window.location.href = "error.html"; 
+    throw error;
+  }
 }
 
 async function apiGetImgID(imageID){

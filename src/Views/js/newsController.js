@@ -9,20 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
 async function getNews() {
   try {
     const response = await apiGetNews();
-    const news = response.data.map((product) => {
-      return new New(
-        product.bao_id,
-        product.nguoi_dung_id,
-        product.hinh_id,
-        product.tieu_de_bao,
-        product.noi_dung,
-      );
-    });
+    const news = response.map((product) => new New(
+      product.bao_id,
+      product.nguoi_dung_id,
+      product.hinh_id,
+      product.tieu_de_bao,
+      product.noi_dung
+    ));
     renderNews(news);
   } catch (error) {
-    console.log("Lỗi từ máy chủ");
+    console.log("Lỗi từ máy chủ", error);
   }
 }
+
 
 
 async function createNews() {
@@ -216,14 +215,14 @@ function resetTB(){
 
 async function logout() {
   try {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("localStorageToken");
 
     await apiLogout(token);
 
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("localStorageToken");
 
     Swal.fire('Đăng xuất thành công', '', 'success').then(() => {
-      window.location.href = "/src/Views/index.html"; 
+      window.location.href = "index.html"; 
     });
   } catch (error) {
     Swal.fire('Lỗi khi đăng xuất', '', 'error');

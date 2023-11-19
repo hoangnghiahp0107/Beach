@@ -62,11 +62,12 @@ video {
 }
 
 #game {
-    background-color: black;
     text-align: center;
-    padding: 0;
-    border: 0;
-    margin: 0;
+    background-position: bottom left;
+    background-image: url(../../../public/img/back_4.png);
+    background-repeat: no-repeat;
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -165,9 +166,6 @@ video {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url(../../../public/img/ys.jpg);
-    background-size: cover;
-    background-position: center;
 }
 
 .wrapper {
@@ -328,10 +326,10 @@ video {
 }
 
 #about {
-    background-image: url(../../../public/img/back_1.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: black;
+
+
+
     padding-bottom: 100px;
     overflow: hidden;
     text-align: center;
@@ -359,7 +357,7 @@ video {
 
 .about__left img {
     width: 100%;
-    height: 400px;
+    height: 470px;
     border-radius: 0 100px 100px 0;
 }
 
@@ -382,11 +380,13 @@ video {
 }
 
 .about__title h2 {
+
     font-size: 70px;
     line-height: 1.1;
     font-weight: 800;
     margin-bottom: 20px;
     color: white;
+    text-align: center;
 }
 
 .about__right p {
@@ -445,8 +445,9 @@ video {
     background-image: url(../../../public/img/back_2.jpg);
     text-align: center;
     width: 100%;
-    background-size: cover;
-    background-position: center;
+    
+    background-repeat: no-repeat;
+    background-position: right;
 }
 
 a {
@@ -594,9 +595,8 @@ body.dark {
 }
 
 footer {
-    background-image: url(../../../public/img/back_1.jpg);
-    background-size: cover;
     background-position: center top;
+    background-color: black;
 }
 
 .footer-bottom {
@@ -611,11 +611,12 @@ small {
 
 .title{
     color: white;
+    padding-top: 20px;
+
 }
 
 .row {
-    font-family: 'CSFONT-TwistyPixel';
-    font-size: 30px;
+    font-size: 20px;
 }
 
 :root {
@@ -742,4 +743,234 @@ small {
 
 .bg-headerdetails{
     background-color: currentColor;
+}
+/* .container{
+    display: flex;
+    justify-content: space-between;
+} */
+.cards {
+    --spacing: 55px;
+    --columns: 3;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1* var(--spacing));
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: calc(calc(100% / var(--columns))-var(--spacing));
+    margin-left: var(--spacing);
+    margin-bottom: var(--spacing);
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+.card-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.card-content {
+    padding: 25px;
+}
+.card-title {
+    font-weight: 700;
+    margin-bottom: 25px;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    font-size: 25px;
+}
+.card-user {
+    display: flex;
+    align-items: center;
+}
+.card-user-info {
+    padding-left: 20px;
+    flex: 1;
+}
+.card-bottom {
+    font-weight: 300;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    max-width: 250px;
+}
+.card-content {
+    height: calc(100%-200px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.content-news {
+    font-size: 20px;
+}
+.card-bottom {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+.contact{
+    width: 110px;
+}
+.porfolio-left .avatar{
+    height: 320px;
+}
+.porfolio-right{
+    color: white;
+    padding: 50px;
+}
+#porfolio{
+    text-align: center;
+    background-image: url(../../../public/img/back_3.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding: 0 50px 100px 50px ;
+}
+.divider.abc{
+    margin-bottom: 150px;
+}
+
+
+
+.container.gamecard{
+  width: 350px;
+  height: 500px;
+  position: relative;
+  perspective: 1000px;
+  padding-left: 150px;
+  padding-top:50px;
+
+}
+
+.carousel-game {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  user-select: none;
+}
+.carousel-game div {
+  transform-style: preserve-3d;
+}
+
+.item {
+  display: block;
+  position: absolute;
+  font-size: 2em;
+  text-align: center;
+  color: #333;
+  transition: transform 1s;
+
+}
+/* Điều Chỉnh hiệu ứng Card game*/
+.item img{
+  border: 10px solid white;
+  border-radius: 20px ;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+/* Điều chỉnh vị trí và hiệu ứng Button */
+.playb{
+  font-size: 20px;
+  position: absolute;
+  bottom: 7%;
+  left: 40%;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  border-radius: 20px;
+  transition: 0.5s;
+  
+}
+
+.container .navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.item:hover .playb{
+  background-color:white;
+  color:  #372D74;
+ 
+}
+
+.item:hover img{
+  box-shadow: 0 0 10px aqua;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8); /* Màu và độ mờ của vẻt sáng */
+}
+
+.slide1 {
+
+  transform: rotateY(0deg) translateZ(250px);
+}
+
+.slide2 {
+  transform: rotateY(120deg) translateZ(250px) rotateY(-120deg);
+}
+
+.slide3 {
+  transform: rotateY(240deg) translateZ(250px) rotateY(-240deg);
+}
+
+@media screen and (max-width:1024px) {
+  .container.gamecard {
+    margin: 0 auto;
+    width: 350px;
+    height: 100px;
+    position: relative;
+    perspective: 1000px;
+  }
+    .slide1 {
+    transform: rotateY(0deg) translateZ(50px);
+    }
+
+    .slide2 {
+    transform: rotateY(120deg) translateZ(50px) rotateY(-120deg);
+    }
+
+    .slide3 {
+    transform: rotateY(240deg) translateZ(50px) rotateY(-240deg);
+    }
+
+    .playb{
+    font-size: 20px;
+    position: absolute;
+    bottom: 8%;
+    left: 44%;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    }
+    
+    .item img{
+    border: 3px solid white;
+    }
 }
