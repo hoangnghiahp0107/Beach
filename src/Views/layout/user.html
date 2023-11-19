@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../../public/img/Logo.png" />
+    <title>Aqua Future</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+    <div class="sidebar close">
+        <a href="index.html" class="logo">
+            <img src="../../../public/img/Logo.png" alt="">
+            <div class="logo-name"><span>Aqua</span>Future</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="user.html"><i class="fa-solid fa-user"></i>Tài khoản</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Đăng xuất
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content" id="account">
+        <nav>
+            <i class="fa-solid fa-bars icon-menu mx-2"></i>
+        </nav>
+        <div class="container mt-4" style="border: 1px solid #e1e3e1;">
+            <h2>Thông tin cơ bản</h2>
+            <div class="d-flex image-user">
+                <div class="d-flex align-items-center w-100">
+                    <p>Ảnh hồ sơ</p>
+                    <p style="padding:0 100px ;">Ảnh hồ sơ sẽ giúp bạn cá nhân hóa tài khoản của mình</p>
+                </div>
+                <div class="select-image w-100" style="padding-left: 210px;">
+                    <div class="container-1">
+                        <input type="file" id="file" accept="image/*" hidden>
+                        <div class="img-area" data-img="">
+                            <i class='bx bxs-cloud-upload icon'></i>
+                            <button>Upload image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex image-user">
+                <div class="d-flex align-items-center w-100">
+                    <p>Họ và tên</p>
+                    <p style="padding:0 100px;">Thanh Hoàng</p>
+                </div>
+                <button class="btn bt-img" type="button" onclick="myFunction()" style="border: none; width: 100%;"><i
+                        class="fa-solid fa-angle-right"></i></button>
+            </div>
+            <div id="myDIV" style="display: none;">
+                <div class="d-flex image-user">
+                    <div class="d-flex align-items-center w-100">
+                        <p>Nhập họ và tên </p>
+                        <div style="padding:0 55px;border: none;">
+                            </style><input type="text" id="fname" name="fname"></div>
+                        <button class="btn bt-img" type="button"
+                            style="border: none; width: 15%;; align-self: right; border-radius: 15px;background-color: #e4e4e4 ;">Xác
+                            nhận</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex image-user">
+                <div class="d-flex align-items-center w-100">
+                    <p>Mật khẩu</p>
+                    <p style="padding:0 100px;">**********</p>
+                </div>
+                <button class="btn bt-img" type="button" onclick="myFunction1()" style="border: none; width: 100%;">
+                    <i id="angleRightIcon" class="fa-solid fa-angle-right"></i></button>
+            </div>
+            <div id="myDIV122" style="display: none;">
+                <div class="d-flex image-user">
+                    <div class="d-flex align-items-center w-100">
+                        <p>Nhập mật khẩu hiện tại </p>
+                        <div style="padding:0 55px;border: none;">
+                            </style>
+                            <label>
+
+                                <div>
+                                    <input type="password" id="password" placeholder="Enter your password..." />
+
+                                    <button type="button" id="show-passwd"> </button>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex image-user">
+                    <div class="d-flex align-items-center w-100">
+                        <p>Nhập mật khẩu mới </p>
+                        <div style="padding:0 80px;border: none;">
+                            </style>
+                            <label>
+
+                                <div>
+                                    <input type="password" placeholder="Enter your password..." />
+
+                                    <button type="button" id="show-passwd"> </button>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex image-user">
+                    <div class="d-flex align-items-center w-100">
+                        <p>Nhập lại mật khẩu mới </p>
+                        <div style="padding:0 60px;border: none;">
+                            </style>
+                            <label>
+                                <div>
+                                    <input type="password" placeholder="Enter your password..." />
+
+                                    <button type="button" id="show-passwd"> </button>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-confirm-name">
+                    <div class="d-flex align-items-center w-100">
+                        <div style="padding:0 400px;border: none;"></div>
+
+                        <button class="btn bt-img" type="button"
+                            style="border: none; width: 8%;; align-self: right; border-radius: 15px;background-color: #e4e4e4 ;">Xác
+                            nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+            integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../js/sidebar.js"></script>
+        <script src="../js/toggleUser.js"></script>
+        <script src="../services/callApi.js"></script>
+</body>
+
+</html>
