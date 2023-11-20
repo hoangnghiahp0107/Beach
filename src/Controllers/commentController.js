@@ -41,7 +41,7 @@ const getCommentID = async (req, res) => {
 
 const getCommentDetailsID = async (req, res) => {
     const { bao_id } = req.params;
-    const data = await model.binh_luan.findOne({
+    const data = await model.binh_luan.findAll({
         where: {
             bao_id: bao_id
         },
