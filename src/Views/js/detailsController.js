@@ -116,6 +116,10 @@ function formatDate(dateString) {
 async function taoComment() {
     const noi_dung = getElement("#noi_dung").value;
     const localStorageToken = localStorage.getItem('localStorageToken');
+    if (!localStorageToken) {
+        window.location.href = 'login.html';
+        return;
+    }
     const decodedToken = localStorageToken ? JSON.parse(atob(localStorageToken.split('.')[1])) : null;
     const nguoi_dung_id = decodedToken && decodedToken.data && decodedToken.data.nguoi_dung_id;
     const currentDateTime = new Date();
@@ -262,7 +266,12 @@ async function updateComment(commentID) {
     }
 }
 
+if (localStorage.getItem('localStorageToken')) {
+    document.getElementById('account-link').href = 'user.html';
+} else {
+    document.getElementById('account-link').href = 'login.html';
+}
 
 function getElement(selector) {
     return document.querySelector(selector);
-  }
+}

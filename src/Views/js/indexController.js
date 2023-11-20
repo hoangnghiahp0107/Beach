@@ -132,3 +132,8 @@ function truncateTitle(content, maxLength = 30) {
   return content;
 }   
 
+if (localStorage.getItem('localStorageToken')) {
+    document.getElementById('account-link').href = 'user.html';
+} else {
+    document.getElementById('account-link').href = 'login.html';
+}
